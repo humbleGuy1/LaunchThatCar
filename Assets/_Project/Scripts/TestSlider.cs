@@ -10,12 +10,15 @@ public class TestSlider : MonoBehaviour
     private void Start()
     {
         _slider.minValue = 0;
-        _slider.maxValue = 400;
+        _slider.maxValue = 100;
     }
 
     private void Update()
     {
         if(_playerInput.IsButtonHold)
-            _slider.value = _playerInput.DeltaY;   
+            _slider.value = _playerInput.DeltaY;
+
+        if (_playerInput.IsButtonUp)
+            _slider.value = _slider.minValue;
     }
 }

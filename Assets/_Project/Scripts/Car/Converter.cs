@@ -6,10 +6,11 @@ namespace Runtime.BaseCar
     [Serializable]
     public class Converter
     {
-        [SerializeField] private float _minForce;
         [SerializeField] private float _maxForce;
-        [SerializeField] private float _minYDelta;
         [SerializeField] private float _maxYDelta;
+
+        private readonly float _minForce;
+        private readonly float _minYDelta;
 
         public float ConvertYDelta(float yDelta)
         {

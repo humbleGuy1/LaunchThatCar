@@ -1475,18 +1475,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1506468295732908931, guid: 324d1b16bc1764c4082b4dc455ed7e5b, type: 3}
-      propertyPath: _converter._maxForce
-      value: 150
-      objectReference: {fileID: 0}
     - target: {fileID: 5437348073241034574, guid: 324d1b16bc1764c4082b4dc455ed7e5b, type: 3}
       propertyPath: m_Name
       value: TestCar
       objectReference: {fileID: 0}
-    - target: {fileID: 5967224750866897624, guid: 324d1b16bc1764c4082b4dc455ed7e5b, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: bbffc33c570212c4990968e4e989aff3, type: 2}
     - target: {fileID: 7647199117787068107, guid: 324d1b16bc1764c4082b4dc455ed7e5b, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -1531,6 +1523,5 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 3782524648204104247, guid: 324d1b16bc1764c4082b4dc455ed7e5b, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 324d1b16bc1764c4082b4dc455ed7e5b, type: 3}
