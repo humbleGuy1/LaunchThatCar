@@ -17,13 +17,9 @@ namespace Runtime.BaseCar
         private readonly float _relaxTime = 1;
         public float Force { get; private set; }
         public float MaxForce => _converter.MaxForce;
-        public bool IsMoving => _rigidBody.velocity != Vector3.zero;
 
         private void Update()
         {
-            if (IsMoving)
-                return;
-
             if (_playerInput.IsButtonUp)
             {
                 MoveForward(Force);

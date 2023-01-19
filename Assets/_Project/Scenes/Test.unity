@@ -1184,10 +1184,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1506468295732908931, guid: 324d1b16bc1764c4082b4dc455ed7e5b, type: 3}
-      propertyPath: _rotationLimiter
-      value: 0.5
-      objectReference: {fileID: 0}
     - target: {fileID: 5437348073241034574, guid: 324d1b16bc1764c4082b4dc455ed7e5b, type: 3}
       propertyPath: m_Name
       value: TestCar
