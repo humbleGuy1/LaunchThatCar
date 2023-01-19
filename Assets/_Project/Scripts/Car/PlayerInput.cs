@@ -33,10 +33,10 @@ namespace Runtime.BaseCar
             if (IsButtonHold)
             {
                 XRotation += Input.GetAxis(MouseX);
+                _endPoint = Input.mousePosition;
+                DeltaY = _startPoint.y - _endPoint.y;
             }
 
-            _endPoint = Input.mousePosition;
-            DeltaY = _startPoint.y - _endPoint.y;
         }
     }
 }

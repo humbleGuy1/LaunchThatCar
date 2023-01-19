@@ -6,7 +6,8 @@ namespace Runtime.BaseCar
     [Serializable]
     public class Converter
     {
-        [SerializeField] private float _maxForce;
+        [field:SerializeField] public float MaxForce { get; private set; }
+
         [SerializeField] private float _maxYDelta;
 
         private readonly float _minForce;
@@ -15,7 +16,7 @@ namespace Runtime.BaseCar
         public float ConvertYDelta(float yDelta)
         {
             yDelta = Mathf.Clamp(yDelta, _minYDelta, _maxYDelta);
-            float force = Mathf.Lerp(_minForce,_maxForce, yDelta/_maxYDelta);
+            float force = Mathf.Lerp(_minForce,MaxForce, yDelta/_maxYDelta);
             return force;
         }
 

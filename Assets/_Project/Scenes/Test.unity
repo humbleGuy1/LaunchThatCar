@@ -414,17 +414,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &379713589 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2106729077, guid: 324d1b16bc1764c4082b4dc455ed7e5b, type: 3}
-  m_PrefabInstance: {fileID: 6507761861801985182}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b2ffda054c1129a48a92aa5c9392a2f4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &698024481
 GameObject:
   m_ObjectHideFlags: 0
@@ -1139,7 +1128,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _slider: {fileID: 1487792961}
-  _playerInput: {fileID: 379713589}
+  _carEngine: {fileID: 1617136182}
+--- !u!114 &1617136182 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1506468295732908931, guid: 324d1b16bc1764c4082b4dc455ed7e5b, type: 3}
+  m_PrefabInstance: {fileID: 6507761861801985182}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18b0682935fe1f74d8aad0c69117d867, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1648829424
 GameObject:
   m_ObjectHideFlags: 0
@@ -1475,6 +1475,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1506468295732908931, guid: 324d1b16bc1764c4082b4dc455ed7e5b, type: 3}
+      propertyPath: _converter._maxYDelta
+      value: 300
+      objectReference: {fileID: 0}
+    - target: {fileID: 1506468295732908931, guid: 324d1b16bc1764c4082b4dc455ed7e5b, type: 3}
+      propertyPath: _converter.<MaxForce>k__BackingField
+      value: 150
+      objectReference: {fileID: 0}
     - target: {fileID: 5437348073241034574, guid: 324d1b16bc1764c4082b4dc455ed7e5b, type: 3}
       propertyPath: m_Name
       value: TestCar

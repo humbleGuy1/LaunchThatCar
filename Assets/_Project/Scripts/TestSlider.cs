@@ -5,7 +5,7 @@ using UnityEngine.UI;
 public class TestSlider : MonoBehaviour
 {
     [SerializeField] private Slider _slider;
-    [SerializeField] private PlayerInput _playerInput;
+    [SerializeField] private CarMover _carEngine;
 
     private void Start()
     {
@@ -15,10 +15,7 @@ public class TestSlider : MonoBehaviour
 
     private void Update()
     {
-        if(_playerInput.IsButtonHold)
-            _slider.value = _playerInput.DeltaY;
-
-        if (_playerInput.IsButtonUp)
-            _slider.value = _slider.minValue;
+        _slider.maxValue = _carEngine.MaxForce;
+        _slider.value = _carEngine.Force;
     }
 }
