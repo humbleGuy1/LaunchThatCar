@@ -19,12 +19,6 @@ namespace Runtime.BaseCar
             float force = Mathf.Lerp(_minForce,MaxForce, yDelta/_maxYDelta);
             return force;
         }
-
-        public float ConvertXRotation(float xRotation)
-        {
-            xRotation = Mathf.Clamp(xRotation, -40, 40);
-            return xRotation;
-        }
     }
 }
 

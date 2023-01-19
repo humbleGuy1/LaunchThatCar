@@ -26,6 +26,7 @@ namespace Runtime.BaseCar
 
             if (Input.GetMouseButtonUp(0))
             {
+                XRotation = 0;
                 IsButtonUp = true;
                 IsButtonHold = false;
             }

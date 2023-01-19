@@ -183,8 +183,9 @@ MonoBehaviour:
   _playerInput: {fileID: 2106729077}
   _rigidBody: {fileID: 6163127464218700423}
   _converter:
-    _maxForce: 150
-    _maxYDelta: 100
+    <MaxForce>k__BackingField: 150
+    _maxYDelta: 300
+  _rotationSensitivity: 1
 --- !u!114 &2106729077
 MonoBehaviour:
   m_ObjectHideFlags: 0
