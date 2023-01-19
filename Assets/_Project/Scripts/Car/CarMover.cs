@@ -7,7 +7,7 @@ namespace Runtime.BaseCar
         [SerializeField] private PlayerInput _playerInput;
         [SerializeField] private Rigidbody _rigidBody;
         [SerializeField] private Converter _converter;
-        [SerializeField] private float _rotationSensitivity;
+        [SerializeField, Min(0)] private float _rotationSensitivity;
         [SerializeField, Range(0, 1f)] private float _rotationLimiter;
 
         private float _startRotation;
