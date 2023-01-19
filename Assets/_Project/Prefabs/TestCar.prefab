@@ -186,6 +186,7 @@ MonoBehaviour:
     <MaxForce>k__BackingField: 150
     _maxYDelta: 300
   _rotationSensitivity: 1
+  _rotationLimiter: 0.5
 --- !u!114 &2106729077
 MonoBehaviour:
   m_ObjectHideFlags: 0

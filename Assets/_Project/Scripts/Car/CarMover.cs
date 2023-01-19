@@ -8,9 +8,13 @@ namespace Runtime.BaseCar
         [SerializeField] private Rigidbody _rigidBody;
         [SerializeField] private Converter _converter;
         [SerializeField] private float _rotationSensitivity;
+        [SerializeField, Range(0, 1f)] private float _rotationLimiter;
+
+        private float _startRotation;
+        private float _currentRotation;
+        private float _deltaRotation;
 
         private readonly float _relaxTime = 1;
-
         public float Force { get; private set; }
         public float MaxForce => _converter.MaxForce;
 
@@ -19,6 +23,7 @@ namespace Runtime.BaseCar
             if (_playerInput.IsButtonUp)
             {
                 MoveForward(Force);
+                _startRotation = transform.rotation.y;
             }
 
             if(_playerInput.IsButtonHold)
@@ -41,7 +46,13 @@ namespace Runtime.BaseCar
 
         public void Rotate(float xRotation)
         {
+            Quaternion savedRotation = transform.rotation;
             transform.Rotate((Vector3.up * xRotation).normalized * _rotationSensitivity);
+            _currentRotation = transform.rotation.y;
+            _deltaRotation = _startRotation - _currentRotation;
+
+            if (Mathf.Abs(_deltaRotation) >= _rotationLimiter)
+                transform.rotation = savedRotation;
         }
     }
 }
