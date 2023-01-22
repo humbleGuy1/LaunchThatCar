@@ -9,6 +9,7 @@ namespace Runtime.BaseCar
 
         private const string MouseX = "Mouse X";
 
+        public bool SpacePressed { get; private set; }
         public bool IsButtonUp { get; private set; }
         public bool IsButtonHold { get; private set; }
         public float DeltaY { get; private set; }
@@ -16,6 +17,7 @@ namespace Runtime.BaseCar
 
         private void Update()
         {
+            SpacePressed = false;
             IsButtonUp = false;
 
             if (Input.GetMouseButtonDown(0))
@@ -37,6 +39,9 @@ namespace Runtime.BaseCar
                 _endPoint = Input.mousePosition;
                 DeltaY = _startPoint.y - _endPoint.y;
             }
+
+            if (Input.GetKey(KeyCode.Space))
+                SpacePressed = true;
 
         }
     }

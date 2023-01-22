@@ -4,15 +4,12 @@ using UnityEngine;
 
 public class Ground : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [SerializeField] private float _maxVelocity;
+    [SerializeField] private float _maxAngularDrag;
 
-    // Update is called once per frame
-    void Update()
+    private void OnTriggerEnter(Collider collider)
     {
-        
+        if (collider.TryGetComponent(out Wheel wheel))
+            wheel.SetMaxVelocity(_maxVelocity, _maxAngularDrag);
     }
 }
