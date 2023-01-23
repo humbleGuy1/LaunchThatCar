@@ -414,7 +414,7 @@ GameObject:
   - component: {fileID: 2106729077}
   - component: {fileID: 1617136192}
   - component: {fileID: 1617136197}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: TestCar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -459,8 +459,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 2.2215803, y: 2.0753655, z: 4.3}
-  m_Center: {x: 0, y: 1.2308695, z: 0}
+  m_Size: {x: 2.2215803, y: 2.0826273, z: 4.3}
+  m_Center: {x: 0, y: 1.2272387, z: 0}
 --- !u!54 &6163127464218700423
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -585,6 +585,7 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   _carController: {fileID: 1617136201}
+  _tenisonForce: 10
 --- !u!114 &1617136201
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -748,6 +749,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Wheel (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 4df5742b4b700e043a66cfeacd649e4c, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4df5742b4b700e043a66cfeacd649e4c, type: 3}
 --- !u!4 &1673854718885789377 stripped
@@ -879,6 +884,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 4df5742b4b700e043a66cfeacd649e4c, type: 3}
       propertyPath: m_Name
       value: Wheel (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 4df5742b4b700e043a66cfeacd649e4c, type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4df5742b4b700e043a66cfeacd649e4c, type: 3}
@@ -1081,6 +1090,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 4df5742b4b700e043a66cfeacd649e4c, type: 3}
       propertyPath: m_Name
       value: Wheel (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 4df5742b4b700e043a66cfeacd649e4c, type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4df5742b4b700e043a66cfeacd649e4c, type: 3}
@@ -1497,6 +1510,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 4df5742b4b700e043a66cfeacd649e4c, type: 3}
       propertyPath: m_Name
       value: Wheel
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 4df5742b4b700e043a66cfeacd649e4c, type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4df5742b4b700e043a66cfeacd649e4c, type: 3}

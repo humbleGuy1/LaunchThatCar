@@ -18,6 +18,8 @@ namespace Runtime.BaseCar
         private AngularVelocityCalculator _angularDragCalculator;
         private CarRespawn _carRespawn;
         private float _elapsedTime;
+        private float _maxDistance = 1;
+        private float _currentDistance;
 
         private readonly float _relaxTime = 1;
         public float Speed { get; private set; }
@@ -77,7 +79,8 @@ namespace Runtime.BaseCar
             if (_playerInput.YRotation < 0 && Speed < MaxSpeed)
             {
                 _rigidBody.velocity = -transform.forward * _tenisonForce * (1f - Speed / MaxSpeed);
-                print(10f * (1f - Speed / MaxSpeed));
+                
+                print(_currentDistance);
             }
 
             if (_playerInput.YRotation > 0 && Speed > 0)
