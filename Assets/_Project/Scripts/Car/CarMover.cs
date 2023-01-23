@@ -13,9 +13,11 @@ namespace Runtime.BaseCar
         [SerializeField] private PositionProperty _positionProperty;
         [SerializeField] private AnimationCurve _angularDragCurve;
         [SerializeField] private CarController _carController;
+        [SerializeField] private float _tenisonForce;
 
         private AngularVelocityCalculator _angularDragCalculator;
         private CarRespawn _carRespawn;
+        private float _elapsedTime;
 
         private readonly float _relaxTime = 1;
         public float Speed { get; private set; }
@@ -74,12 +76,13 @@ namespace Runtime.BaseCar
         {
             if (_playerInput.YRotation < 0 && Speed < MaxSpeed)
             {
-                _rigidBody.velocity = -transform.forward * 3f;
+                _rigidBody.velocity = -transform.forward * _tenisonForce * (1f - Speed / MaxSpeed);
+                print(10f * (1f - Speed / MaxSpeed));
             }
 
             if (_playerInput.YRotation > 0 && Speed > 0)
             {
-                _rigidBody.velocity = transform.forward * 3f;
+                _rigidBody.velocity = transform.forward * _tenisonForce * Speed / MaxSpeed;
             }
 
             if (_playerInput.YRotation == 0)
