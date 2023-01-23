@@ -3,7 +3,7 @@ using System.Linq;
 using UnityEngine;
 
 [Serializable]
-public class WheelsStatus
+public class WheelsHandler
 {
     [SerializeField] private Wheel[] _wheels;
     
@@ -27,6 +27,22 @@ public class WheelsStatus
         AverageMaxVelocity = GetMaxVelocityByGround();
         MaxAngularDrag = GetMaxAngularDrag();
 
+    }
+
+    public void Stop()
+    {
+        foreach (var wheel in _wheels)
+        {
+            wheel.Stop();
+        }
+    }
+
+    public void Resume()
+    {
+        foreach (var wheel in _wheels)
+        {
+            wheel.Resume();
+        }
     }
 
     private float GetMaxAngularDrag()

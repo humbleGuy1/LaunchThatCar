@@ -5,11 +5,13 @@ public class CarRespawn
 {
     private Rigidbody _rigidBody;
     private Transform _transform;
+    private WheelsHandler _wheelStatus;
 
-    public CarRespawn(Rigidbody rigidBody, Transform transform)
+    public CarRespawn(Rigidbody rigidBody, Transform transform, WheelsHandler wheelStatus)
     {
         _rigidBody = rigidBody;
         _transform = transform;
+        _wheelStatus = wheelStatus;
     }
 
     public IEnumerator Respawn(Transform point)
@@ -20,7 +22,9 @@ public class CarRespawn
         _transform.position = point.position;
         _transform.rotation = point.rotation;
         _rigidBody.isKinematic = true;
+        _wheelStatus.Stop();
         yield return new WaitForSeconds(0.3f);
         _rigidBody.isKinematic = false;
+        _wheelStatus.Resume();  
     }
 }

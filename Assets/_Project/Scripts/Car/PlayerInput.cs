@@ -11,10 +11,10 @@ namespace Runtime.BaseCar
         private const string MouseX = "Mouse X";
         private const string MouseY = "Mouse Y";
 
-        public bool IsButtonUp => Input.GetMouseButtonUp(0);
-        public bool IsButtonDown => Input.GetMouseButtonDown(0);
-        public bool SpacePressed => Input.GetKeyDown(KeyCode.Space);
-        public bool IsButtonHold => Input.GetMouseButton(0);
+        public bool IsButtonUp { get; private set;}
+        public bool IsButtonDown {get; private set;}
+        public bool SpacePressed {get; private set;}
+        public bool IsButtonHold {get; private set;}
         public float DeltaY { get; private set; }
         public float XRotation { get; private set; }
         public float YRotation { get; private set; }
@@ -23,6 +23,11 @@ namespace Runtime.BaseCar
         {
             if (EventSystem.current.IsPointerOverGameObject())
                 return;
+
+            IsButtonUp = Input.GetMouseButtonUp(0);
+            IsButtonDown = Input.GetMouseButtonDown(0);
+            SpacePressed = Input.GetKeyDown(KeyCode.Space);
+            IsButtonHold = Input.GetMouseButton(0);
 
             if (Input.GetMouseButtonDown(0))
             {

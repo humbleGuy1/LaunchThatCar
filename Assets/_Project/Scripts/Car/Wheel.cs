@@ -24,4 +24,14 @@ public class Wheel : MonoBehaviour
         MaxVelocity = maxSpeed;
         MaxAngularDrag = maxAngularDrag;
     }
+
+    public void Stop()
+    {
+        _wheelCollider.brakeTorque = Mathf.Infinity;
+    }
+
+    public void Resume()
+    {
+        _wheelCollider.brakeTorque = 0;
+    }
 }

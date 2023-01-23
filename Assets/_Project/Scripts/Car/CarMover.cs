@@ -9,7 +9,7 @@ namespace Runtime.BaseCar
         [SerializeField] private PlayerInput _playerInput;
         [SerializeField] private Rigidbody _rigidBody;
         [SerializeField] private Converter _converter;
-        [SerializeField] private WheelsStatus _wheelStatus;
+        [SerializeField] private WheelsHandler _wheels;
         [SerializeField] private CenterOfMassPosition _centerOfMassPosition = new CenterOfMassPosition();
         [SerializeField] private PositionProperty _positionProperty;
         [SerializeField] private AnimationCurve _angularDragCurve;
@@ -28,19 +28,19 @@ namespace Runtime.BaseCar
 
         private void Awake()
         {
-            _carRespawn = new CarRespawn(_rigidBody, transform);
-            _angularDragCalculator = new AngularVelocityCalculator(0, 3,_rigidBody, _angularDragCurve, _wheelStatus);
+            _carRespawn = new CarRespawn(_rigidBody, transform, _wheels);
+            _angularDragCalculator = new AngularVelocityCalculator(0, 3,_rigidBody, _angularDragCurve, _wheels);
             _centerOfMassPosition.Init(_positionProperty);
         }
 
         private void Update()
         {
-            _angularDragCalculator.Update(_wheelStatus.MaxAngularDrag);
-            _wheelStatus.Update();
-            _rigidBody.centerOfMass = _centerOfMassPosition.GetCenterOfMassPosition(_wheelStatus.IsGrounded);
+            _angularDragCalculator.Update(_wheels.MaxAngularDrag);
+            _wheels.Update();
+            _rigidBody.centerOfMass = _centerOfMassPosition.GetCenterOfMassPosition(_wheels.IsGrounded);
             _rigidBody.angularDrag = _angularDragCalculator.Calculate(_rigidBody.velocity.magnitude, MaxSpeed);
 
-            if(_wheelStatus.IsGrounded == false)
+            if(_wheels.IsGrounded == false)
             {
                 _rigidBody.velocity = Vector3.ClampMagnitude(_rigidBody.velocity, 50);
                 //_rigidBody.angularVelocity *= 1.2f;
@@ -77,7 +77,7 @@ namespace Runtime.BaseCar
 
         public void MoveForward(float force)
         {
-            if(_wheelStatus.IsGrounded)
+            if(_wheels.IsGrounded)
                 _rigidBody.velocity = transform.forward * force;
         }
 

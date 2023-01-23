@@ -9,12 +9,12 @@ public class AngularVelocityCalculator
     private float _minAngularDrag;
     private AnimationCurve _interpolator;
     private Rigidbody _rigidBody;
-    private WheelsStatus _wheelStatus;
+    private WheelsHandler _wheelStatus;
     private float _previousDownVeloicty;
     private float _aditionalAngularDrag;
 
 
-    public AngularVelocityCalculator(float minAngularDrag, float maxAngularDrag, Rigidbody rigidbody, AnimationCurve angularDragCurve, WheelsStatus wheelsStatus)
+    public AngularVelocityCalculator(float minAngularDrag, float maxAngularDrag, Rigidbody rigidbody, AnimationCurve angularDragCurve, WheelsHandler wheelsStatus)
     {
         _maxAngularDrag = maxAngularDrag;
         _minAngularDrag = minAngularDrag;
