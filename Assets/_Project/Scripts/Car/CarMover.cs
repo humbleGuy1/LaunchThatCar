@@ -35,10 +35,14 @@ namespace Runtime.BaseCar
             _rigidBody.centerOfMass = _centerOfMassPosition.GetCenterOfMassPosition(_wheelStatus.IsGrounded);
             _rigidBody.angularDrag = _angularDragCalculator.Calculate(_rigidBody.velocity.magnitude, MaxSpeed);
 
+            if (_playerInput.IsButtonDown)
+            {
+                _carController.SetStartRotation(transform.rotation.y);
+            }
+
             if (_playerInput.IsButtonUp)
             {
                 MoveForward(Speed);
-                _carController.SetStartRotation(transform.rotation.y);
             }
 
             if(_playerInput.IsButtonHold)
