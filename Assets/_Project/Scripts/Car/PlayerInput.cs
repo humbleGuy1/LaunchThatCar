@@ -13,7 +13,7 @@ namespace Runtime.BaseCar
         public bool IsButtonUp => Input.GetMouseButtonUp(0);
         public bool IsButtonDown => Input.GetMouseButtonDown(0);
         public bool SpacePressed => Input.GetKey(KeyCode.Space);
-        public bool IsButtonHold { get; private set; }
+        public bool IsButtonHold => Input.GetMouseButton(0);
         public float DeltaY { get; private set; }
         public float XRotation { get; private set; }
         public float YRotation { get; private set; }
@@ -23,13 +23,11 @@ namespace Runtime.BaseCar
             if (IsButtonDown)
             {
                 _startPoint = Input.mousePosition;
-                IsButtonHold = true;
             }
 
             if (IsButtonUp)
             {
                 XRotation = 0;
-                IsButtonHold = false;
             }
 
             if (IsButtonHold)
