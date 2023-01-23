@@ -31,7 +31,7 @@ public class AngularVelocityCalculator
 
         if (_previousDownVeloicty < -0.2f)
         {
-            float velocityDiffrence = Mathf.Abs(currentDownVelocity -_previousDownVeloicty);
+            float velocityDiffrence = Mathf.Abs(currentDownVelocity - _previousDownVeloicty);
 
             if (velocityDiffrence > 5f)
                 _aditionalAngularDrag = _maxAdditionalAngularDrag;
@@ -44,10 +44,11 @@ public class AngularVelocityCalculator
 
     public float Calculate(float currentVelocity, float maxVelocity)
     {
+        currentVelocity = Mathf.Clamp(currentVelocity, 0, maxVelocity);
         float angularDragByWheel = _interpolator.Evaluate(_wheelStatus.GroundedWheelCount);
         float angularDragBySpeed = Mathf.Lerp(_minAngularDrag, _maxAngularDrag, currentVelocity/ maxVelocity);
         float newAngularVelocity = angularDragBySpeed*angularDragByWheel +_aditionalAngularDrag;
-
+        
         return newAngularVelocity;
     }
 }

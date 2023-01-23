@@ -35,21 +35,21 @@ public class WheelsStatus
 
         foreach (var wheel in _wheels)
         {
-            value = wheel.MaxAngularDrag;
+            value += wheel.MaxAngularDrag;
         }
-
+        
         return value / _wheels.Length ;
     }
 
     private float GetMaxVelocityByGround()
     {
-        float minAngularDrag =0;
+        float maxAngularDrag =0;
 
         foreach (var wheel in _wheels)
         {
-            minAngularDrag += wheel.MaxVelocity;
+            maxAngularDrag += wheel.MaxVelocity;
         }
 
-        return minAngularDrag / _wheels.Length;
+        return maxAngularDrag / _wheels.Length;
     }
 }

@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 namespace Runtime.BaseCar
 {
@@ -12,7 +13,7 @@ namespace Runtime.BaseCar
 
         public bool IsButtonUp => Input.GetMouseButtonUp(0);
         public bool IsButtonDown => Input.GetMouseButtonDown(0);
-        public bool SpacePressed => Input.GetKey(KeyCode.Space);
+        public bool SpacePressed => Input.GetKeyDown(KeyCode.Space);
         public bool IsButtonHold => Input.GetMouseButton(0);
         public float DeltaY { get; private set; }
         public float XRotation { get; private set; }
@@ -20,7 +21,10 @@ namespace Runtime.BaseCar
 
         private void Update()
         {
-            if (IsButtonDown)
+            if (EventSystem.current.IsPointerOverGameObject())
+                return;
+
+            if (Input.GetMouseButtonDown(0))
             {
                 _startPoint = Input.mousePosition;
             }

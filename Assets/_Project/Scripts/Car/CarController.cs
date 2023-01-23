@@ -14,6 +14,11 @@ public class CarController : MonoBehaviour
         _startRotation = startRotation;
     }
 
+    public void SetSensititvity(float sens)
+    {
+        _rotationSensitivity = sens;
+    }
+
     public void Rotate(float xRotation)
     {
         Quaternion savedRotation = transform.rotation;

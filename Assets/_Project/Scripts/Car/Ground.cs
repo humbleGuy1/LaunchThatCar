@@ -4,12 +4,13 @@ using UnityEngine;
 
 public class Ground : MonoBehaviour
 {
-    [SerializeField] private float _maxVelocity;
-    [SerializeField] private float _maxAngularDrag;
+    [field: SerializeField] public GroundProperty Property { get; private set; }
 
     private void OnTriggerEnter(Collider collider)
     {
         if (collider.TryGetComponent(out Wheel wheel))
-            wheel.SetMaxVelocity(_maxVelocity, _maxAngularDrag);
+        {
+            wheel.SetMaxVelocity(Property.MaxVelocity, Property.MaxAngularDrag);
+        }
     }
 }

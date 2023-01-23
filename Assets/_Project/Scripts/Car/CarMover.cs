@@ -1,3 +1,4 @@
+using Dreamteck;
 using System.Linq;
 using UnityEngine;
 
@@ -39,6 +40,12 @@ namespace Runtime.BaseCar
             _rigidBody.centerOfMass = _centerOfMassPosition.GetCenterOfMassPosition(_wheelStatus.IsGrounded);
             _rigidBody.angularDrag = _angularDragCalculator.Calculate(_rigidBody.velocity.magnitude, MaxSpeed);
 
+            if(_wheelStatus.IsGrounded == false)
+            {
+                _rigidBody.velocity = Vector3.ClampMagnitude(_rigidBody.velocity, 50);
+                //_rigidBody.angularVelocity *= 1.2f;
+            }
+
             if (_playerInput.IsButtonDown)
             {
                 _carController.SetStartRotation(transform.rotation.y);
@@ -63,6 +70,11 @@ namespace Runtime.BaseCar
             }
         }
 
+        public void SetMaxForce(float value)
+        {
+            _converter.SetMaxForce(value);
+        }
+
         public void MoveForward(float force)
         {
             if(_wheelStatus.IsGrounded)
@@ -76,22 +88,12 @@ namespace Runtime.BaseCar
 
         private void Pull()
         {
-            if (_playerInput.YRotation < 0 && Speed < MaxSpeed)
-            {
-                _rigidBody.velocity = -transform.forward * _tenisonForce * (1f - Speed / MaxSpeed);
+            //if (_playerInput.YRotation < 0 && Speed < MaxSpeed)
+            //{
+            //    _rigidBody.velocity = -transform.forward * _tenisonForce * (1f - Speed / MaxSpeed);
                 
-                print(_currentDistance);
-            }
-
-            if (_playerInput.YRotation > 0 && Speed > 0)
-            {
-                _rigidBody.velocity = transform.forward * _tenisonForce * Speed / MaxSpeed;
-            }
-
-            if (_playerInput.YRotation == 0)
-            {
-                _rigidBody.velocity = Vector3.zero;
-            }
+            //    print(_currentDistance);
+            //}
         }
     }
 }

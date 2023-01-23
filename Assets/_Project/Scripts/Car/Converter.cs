@@ -13,6 +13,11 @@ namespace Runtime.BaseCar
         private readonly float _minForce;
         private readonly float _minYDelta;
 
+        public void SetMaxForce(float value)
+        {
+            MaxForce = value;
+        }
+
         public float ConvertYDelta(float yDelta)
         {
             yDelta = Mathf.Clamp(yDelta, _minYDelta, _maxYDelta);

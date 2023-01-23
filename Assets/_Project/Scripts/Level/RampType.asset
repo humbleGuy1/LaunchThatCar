@@ -1,0 +1,39 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a69918f434cf2304488cdcab2dd265fb, type: 3}
+  m_Name: RampType
+  m_EditorClassIdentifier: 
+  _rampPropertys:
+  - <Type>k__BackingField: 0
+    <XAngle>k__BackingField: 60
+    <Distance>k__BackingField: 14
+    <Width>k__BackingField: 5
+    <MaxSpeed>k__BackingField: 200
+    <MaxAngularDrag>k__BackingField: 1
+  - <Type>k__BackingField: 1
+    <XAngle>k__BackingField: 70
+    <Distance>k__BackingField: 20
+    <Width>k__BackingField: 2
+    <MaxSpeed>k__BackingField: 200
+    <MaxAngularDrag>k__BackingField: 5
+  - <Type>k__BackingField: 2
+    <XAngle>k__BackingField: 85
+    <Distance>k__BackingField: 20
+    <Width>k__BackingField: 5
+    <MaxSpeed>k__BackingField: 200
+    <MaxAngularDrag>k__BackingField: 5
+  - <Type>k__BackingField: 3
+    <XAngle>k__BackingField: 70
+    <Distance>k__BackingField: 20
+    <Width>k__BackingField: 5
+    <MaxSpeed>k__BackingField: 200
+    <MaxAngularDrag>k__BackingField: 5

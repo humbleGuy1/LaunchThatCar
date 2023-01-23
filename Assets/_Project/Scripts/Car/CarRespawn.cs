@@ -20,7 +20,7 @@ public class CarRespawn
         _transform.position = point.position;
         _transform.rotation = point.rotation;
         _rigidBody.isKinematic = true;
-        yield return new WaitForSeconds(0.2f);
+        yield return new WaitForSeconds(0.3f);
         _rigidBody.isKinematic = false;
     }
 }
