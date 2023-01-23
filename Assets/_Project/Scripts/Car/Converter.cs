@@ -16,7 +16,7 @@ namespace Runtime.BaseCar
         public float ConvertYDelta(float yDelta)
         {
             yDelta = Mathf.Clamp(yDelta, _minYDelta, _maxYDelta);
-            float force = Mathf.Lerp(_minForce,MaxForce, yDelta/_maxYDelta);
+            float force = Mathf.Lerp(_minForce, MaxForce, yDelta/_maxYDelta);
             return force;
         }
     }

@@ -8,16 +8,12 @@ namespace Runtime.BaseCar
         [SerializeField] private PlayerInput _playerInput;
         [SerializeField] private Rigidbody _rigidBody;
         [SerializeField] private Converter _converter;
-        [SerializeField, Min(0)] private float _rotationSensitivity;
-        [SerializeField, Range(0, 1f)] private float _rotationLimiter;
         [SerializeField] private WheelsStatus _wheelStatus;
         [SerializeField] private CenterOfMassPosition _centerOfMassPosition = new CenterOfMassPosition();
         [SerializeField] private PositionProperty _positionProperty;
         [SerializeField] private AnimationCurve _angularDragCurve;
+        [SerializeField] private CarController _carController;
 
-        private float _startRotation;
-        private float _currentRotation;
-        private float _deltaRotation;
         private AngularVelocityCalculator _angularDragCalculator;
         private CarRespawn _carRespawn;
 
@@ -42,13 +38,14 @@ namespace Runtime.BaseCar
             if (_playerInput.IsButtonUp)
             {
                 MoveForward(Speed);
-                _startRotation = transform.rotation.y;
+                _carController.SetStartRotation(transform.rotation.y);
             }
 
             if(_playerInput.IsButtonHold)
             {
                 Speed = _converter.ConvertYDelta(_playerInput.DeltaY);
-                Rotate(_playerInput.XRotation);
+                _carController.Rotate(_playerInput.XRotation);
+                Pull();
             }
 
             if (_playerInput.IsButtonHold == false)
@@ -64,20 +61,27 @@ namespace Runtime.BaseCar
                 _rigidBody.velocity = transform.forward * force;
         }
 
-        public void Rotate(float xRotation)
-        {
-            Quaternion savedRotation = transform.rotation;
-            transform.Rotate((Vector3.up * xRotation).normalized * _rotationSensitivity);
-            _currentRotation = transform.rotation.y;
-            _deltaRotation = _startRotation - _currentRotation;
-
-            if (Mathf.Abs(_deltaRotation) >= _rotationLimiter)
-                transform.rotation = savedRotation;
-        }
-
         public void Respawn(Transform point)
         {
             StartCoroutine(_carRespawn.Respawn(point));
+        }
+
+        private void Pull()
+        {
+            if (_playerInput.YRotation < 0 && Speed < MaxSpeed)
+            {
+                _rigidBody.velocity = -transform.forward * 3f;
+            }
+
+            if (_playerInput.YRotation > 0 && Speed > 0)
+            {
+                _rigidBody.velocity = transform.forward * 3f;
+            }
+
+            if (_playerInput.YRotation == 0)
+            {
+                _rigidBody.velocity = Vector3.zero;
+            }
         }
     }
 }

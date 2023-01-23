@@ -8,12 +8,14 @@ namespace Runtime.BaseCar
         private Vector3 _endPoint;
 
         private const string MouseX = "Mouse X";
+        private const string MouseY = "Mouse Y";
 
         public bool SpacePressed { get; private set; }
         public bool IsButtonUp { get; private set; }
         public bool IsButtonHold { get; private set; }
         public float DeltaY { get; private set; }
         public float XRotation { get; private set; }
+        public float YRotation { get; private set; }
 
         private void Update()
         {
@@ -36,6 +38,7 @@ namespace Runtime.BaseCar
             if (IsButtonHold)
             {
                 XRotation = Input.GetAxis(MouseX);
+                YRotation = Input.GetAxis(MouseY);
                 _endPoint = Input.mousePosition;
                 DeltaY = _startPoint.y - _endPoint.y;
             }
