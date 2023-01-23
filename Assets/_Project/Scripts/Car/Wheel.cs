@@ -27,7 +27,7 @@ public class Wheel : MonoBehaviour
 
     public void Stop()
     {
-        _wheelCollider.brakeTorque = Mathf.Infinity;
+        _wheelCollider.brakeTorque = 1000f;
     }
 
     public void Resume()

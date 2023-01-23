@@ -43,9 +43,10 @@ namespace Runtime.BaseCar
             {
                 XRotation = Input.GetAxis(MouseX);
                 YRotation = Input.GetAxis(MouseY);
+
                 _endPoint = Input.mousePosition;
                 DeltaY = _startPoint.y - _endPoint.y;
-            }
+            } 
         }
     }
 }

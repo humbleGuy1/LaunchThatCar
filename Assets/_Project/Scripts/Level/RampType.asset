@@ -26,13 +26,13 @@ MonoBehaviour:
     <MaxSpeed>k__BackingField: 200
     <MaxAngularDrag>k__BackingField: 5
   - <Type>k__BackingField: 2
-    <XAngle>k__BackingField: 85
+    <XAngle>k__BackingField: 70
     <Distance>k__BackingField: 20
     <Width>k__BackingField: 5
     <MaxSpeed>k__BackingField: 200
     <MaxAngularDrag>k__BackingField: 5
   - <Type>k__BackingField: 3
-    <XAngle>k__BackingField: 70
+    <XAngle>k__BackingField: 80
     <Distance>k__BackingField: 20
     <Width>k__BackingField: 5
     <MaxSpeed>k__BackingField: 200

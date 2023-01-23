@@ -23,6 +23,8 @@ namespace Runtime.BaseCar
         private float _currentDistance;
 
         private readonly float _relaxTime = 1;
+
+        public float MaxFlySpeed { get; private set; } = 50;
         public float Speed { get; private set; }
         public float MaxSpeed => _converter.MaxForce;
 
@@ -42,7 +44,7 @@ namespace Runtime.BaseCar
 
             if(_wheels.IsGrounded == false)
             {
-                _rigidBody.velocity = Vector3.ClampMagnitude(_rigidBody.velocity, 50);
+                _rigidBody.velocity = Vector3.ClampMagnitude(_rigidBody.velocity, MaxFlySpeed);
                 //_rigidBody.angularVelocity *= 1.2f;
             }
 
@@ -73,6 +75,12 @@ namespace Runtime.BaseCar
         public void SetMaxForce(float value)
         {
             _converter.SetMaxForce(value);
+        }
+
+        public void SetMaxFlySpeed(float value)
+        {
+            MaxFlySpeed = value;
+            MaxFlySpeed = Mathf.Clamp(MaxFlySpeed, 0, MaxSpeed);
         }
 
         public void MoveForward(float force)
