@@ -28,6 +28,8 @@ namespace Runtime.BaseCar
         public float Speed { get; private set; }
         public float MaxSpeed => _converter.MaxForce;
 
+        public WheelsHandler Wheels => _wheels;
+
         private void Awake()
         {
             _carRespawn = new CarRespawn(_rigidBody, transform, _wheels);
@@ -99,9 +101,17 @@ namespace Runtime.BaseCar
             //if (_playerInput.YRotation < 0 && Speed < MaxSpeed)
             //{
             //    _rigidBody.velocity = -transform.forward * _tenisonForce * (1f - Speed / MaxSpeed);
-                
-            //    print(_currentDistance);
             //}
+
+            //if (_playerInput.YRotation > 0 && Speed > 0)
+            //{
+            //    _rigidBody.velocity = -transform.forward * _tenisonForce * (1f - Speed / MaxSpeed);
+            //}
+
+            if(_playerInput.YRotation == 0)
+            {
+                _rigidBody.velocity = Vector3.zero;
+            }
         }
     }
 }

@@ -6,6 +6,8 @@ namespace Runtime.BaseCar
     public class Car : MonoBehaviour
     {
         [SerializeField] private CarMover _carMover;
+
+        public CarMover CarMover => _carMover;
     }
 }
 
