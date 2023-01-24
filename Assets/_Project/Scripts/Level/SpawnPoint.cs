@@ -4,15 +4,12 @@ using UnityEngine;
 
 public class SpawnPoint : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [SerializeField] private MeshRenderer _meshRenderer;
 
-    // Update is called once per frame
-    void Update()
+    public void CollectCheckPoint()
     {
-        
+        Material material = new Material(_meshRenderer.material);
+        material.color = Color.green;
+        _meshRenderer.material = material;
     }
 }

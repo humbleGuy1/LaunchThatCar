@@ -3,6 +3,8 @@ using UnityEngine;
 
 public class CarRespawn
 {
+    public bool IsRespawning { get; private set; }
+
     private Rigidbody _rigidBody;
     private Transform _transform;
     private WheelsHandler _wheelStatus;
@@ -16,15 +18,16 @@ public class CarRespawn
 
     public IEnumerator Respawn(Transform point)
     {
-        //_rigidBody.velocity = Vector3.zero;
-        //_rigidBody.angularDrag = 0;
-        //_rigidBody.angularVelocity = Vector3.zero;
+        IsRespawning = true;
         _transform.position = point.position;
         _transform.rotation = point.rotation;
         _rigidBody.isKinematic = true;
         _wheelStatus.Stop();
-        yield return new WaitForSeconds(0.3f);
+        yield return null;
         _rigidBody.isKinematic = false;
+        yield return new WaitForSeconds(0.4f);
+        //yield return new WaitForSeconds(0.7f);
         _wheelStatus.Resume();
+        IsRespawning = false;
     }
 }

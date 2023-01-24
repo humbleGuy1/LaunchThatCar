@@ -21,12 +21,16 @@ namespace Runtime.BaseCar
         private float _elapsedTime;
         private float _maxDistance = 1;
         private float _currentDistance;
+        private bool isConstant;
 
-        private readonly float _relaxTime = 1;
+        private readonly float _relaxTime = 0.5f;
 
-        public float MaxFlySpeed { get; private set; } = 50;
+        public float MaxStopSpeed { get; private set; } = 50f;
+        public float StopSpeed { get; private set; } = 200f;
+        public float MaxFlySpeed { get; private set; } = 50f;
         public float Speed { get; private set; }
         public float MaxSpeed => _converter.MaxForce;
+        public bool IsMoving => _rigidBody.velocity.magnitude>0.2f;
 
         public WheelsHandler Wheels => _wheels;
 
@@ -39,6 +43,9 @@ namespace Runtime.BaseCar
 
         private void Update()
         {
+            if (_carRespawn.IsRespawning)
+                return;
+
             _angularDragCalculator.Update(_wheels.MaxAngularDrag);
             _wheels.Update();
             _rigidBody.centerOfMass = _centerOfMassPosition.GetCenterOfMassPosition(_wheels.IsGrounded);
@@ -55,28 +62,44 @@ namespace Runtime.BaseCar
                 _carController.SetStartRotation(transform.rotation.y);
             }
 
-            if (_playerInput.IsButtonUp)
+            if (_playerInput.IsButtonUp && IsMoving == false)
             {
                 MoveForward(Speed);
             }
+            
 
-            if(_playerInput.IsButtonHold)
+            if(_playerInput.IsButtonHold && IsMoving == false)
             {
                 Speed = _converter.ConvertYDelta(_playerInput.DeltaY);
                 _carController.Rotate(_playerInput.XRotation);
                 Pull();
             }
 
-            if (_playerInput.IsButtonHold == false)
+            if (IsMoving)
             {
                 float speed = MaxSpeed / _relaxTime;
                 Speed = Mathf.MoveTowards(Speed, 0, speed * Time.deltaTime);
+            }
+
+            if (_playerInput.IsButtonHold && IsMoving && _wheels.IsGrounded &&_rigidBody.velocity.magnitude<MaxStopSpeed)
+            {
+                Brake(StopSpeed);
             }
         }
 
         public void SetMaxForce(float value)
         {
             _converter.SetMaxForce(value);
+        }
+        
+        public void SetMaxStopSpeed(float value)
+        {
+            MaxStopSpeed = value;
+        }
+
+        public void SetStopSpeed(float value)
+        {
+            StopSpeed = value;
         }
 
         public void SetMaxFlySpeed(float value)
@@ -89,6 +112,11 @@ namespace Runtime.BaseCar
         {
             if(_wheels.IsGrounded)
                 _rigidBody.velocity = transform.forward * force;
+        }
+
+        public void Brake(float brakeSpeed)
+        {
+            _rigidBody.velocity = Vector3.MoveTowards(_rigidBody.velocity, Vector3.zero, brakeSpeed * Time.deltaTime);
         }
 
         public void Respawn(Transform point)

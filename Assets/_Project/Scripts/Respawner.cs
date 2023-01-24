@@ -36,6 +36,6 @@ public class Respawner : MonoBehaviour
 
     public void Respawn()
     {
-        _respawnable.Respawn(_currentRespawnPoint.transform);
+        _respawnable.Respawn(_currentRespawnPoint.SpawnPoint.transform);
     }
 }

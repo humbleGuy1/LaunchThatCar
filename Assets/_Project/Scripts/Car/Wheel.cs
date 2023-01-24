@@ -23,6 +23,7 @@ public class Wheel : MonoBehaviour
     {
         MaxVelocity = maxSpeed;
         MaxAngularDrag = maxAngularDrag;
+        Debug.Log(maxAngularDrag);
     }
 
     public void Stop()

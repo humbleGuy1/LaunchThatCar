@@ -28,7 +28,7 @@ MonoBehaviour:
   - <Type>k__BackingField: 2
     <XAngle>k__BackingField: 70
     <Distance>k__BackingField: 20
-    <Width>k__BackingField: 5
+    <Width>k__BackingField: 20
     <MaxSpeed>k__BackingField: 200
     <MaxAngularDrag>k__BackingField: 5
   - <Type>k__BackingField: 3

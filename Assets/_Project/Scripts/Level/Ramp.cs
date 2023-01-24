@@ -28,7 +28,7 @@ public class Ramp : MonoBehaviour
         _ground.Property.SetProperty(rampProperty.MaxSpeed, rampProperty.MaxAngularDrag);
         SetRotation(rampProperty.XAngle);
         SetDistance(rampProperty.Distance);
-        SetWidth(rampProperty.Width);
+        //SetWidth(rampProperty.Width);
     }
 
     public void SetRotation(float xAngle)
