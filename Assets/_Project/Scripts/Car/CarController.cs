@@ -1,3 +1,4 @@
+using Dreamteck;
 using UnityEngine;
 
 public class CarController : MonoBehaviour
@@ -8,10 +9,17 @@ public class CarController : MonoBehaviour
     private float _currentRotation;
     private float _startRotation;
     private float _deltaRotation;
+    private float _xRotation;
+
+    private void Awake()
+    {
+        _xRotation = GetAngle(transform.eulerAngles.y);
+    }
 
     public void SetStartRotation(float startRotation)
     {
         _startRotation = startRotation;
+        _xRotation = GetAngle(transform.eulerAngles.y);
     }
 
     public void SetSensititvity(float sens)
@@ -19,14 +27,28 @@ public class CarController : MonoBehaviour
         _rotationSensitivity = sens;
     }
 
+
+
     public void Rotate(float xRotation)
     {
+        _xRotation += xRotation;
         Quaternion savedRotation = transform.rotation;
-        transform.Rotate((Vector3.up * xRotation).normalized * _rotationSensitivity);
+        Quaternion targetRotation = Quaternion.Euler(new Vector3(transform.eulerAngles.x, _xRotation, transform.eulerAngles.z));
+        transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, _rotationSensitivity*10);
         _currentRotation = transform.rotation.y;
         _deltaRotation = _startRotation - _currentRotation;
 
         if (Mathf.Abs(_deltaRotation) >= _rotationLimiter)
             transform.rotation = savedRotation;
+    }
+
+    private float GetAngle(float eulerAngle)
+    {
+        float Rotation = eulerAngle;
+
+        if (eulerAngle > 180f)
+            Rotation -= 360f;
+
+        return Rotation;
     }
 }

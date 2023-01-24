@@ -12,7 +12,7 @@ public class Ramp : MonoBehaviour
 
     public RampProperty CurrentProperty { get; private set; }
 
-    private void Awake()
+    private void Start()
     {
         SetProperty(_types.GetPropertyByType(_rampType));
     }

@@ -29,6 +29,7 @@ namespace Runtime.BaseCar
         public float StopSpeed { get; private set; } = 200f;
         public float MaxFlySpeed { get; private set; } = 50f;
         public float Speed { get; private set; }
+        public float RBVelocity => _rigidBody.velocity.magnitude;
         public float MaxSpeed => _converter.MaxForce;
         public bool IsMoving => _rigidBody.velocity.magnitude>0.2f;
 
@@ -65,8 +66,7 @@ namespace Runtime.BaseCar
             if (_playerInput.IsButtonUp && IsMoving == false)
             {
                 MoveForward(Speed);
-            }
-            
+            }            
 
             if(_playerInput.IsButtonHold && IsMoving == false)
             {
@@ -80,8 +80,11 @@ namespace Runtime.BaseCar
                 float speed = MaxSpeed / _relaxTime;
                 Speed = Mathf.MoveTowards(Speed, 0, speed * Time.deltaTime);
             }
+        }
 
-            if (_playerInput.IsButtonHold && IsMoving && _wheels.IsGrounded &&_rigidBody.velocity.magnitude<MaxStopSpeed)
+        private void FixedUpdate()
+        {
+            if (_playerInput.IsButtonHold && _wheels.IsGrounded && _rigidBody.velocity.magnitude < MaxStopSpeed)
             {
                 Brake(StopSpeed);
             }
@@ -110,13 +113,19 @@ namespace Runtime.BaseCar
 
         public void MoveForward(float force)
         {
-            if(_wheels.IsGrounded)
+            if (_wheels.IsGrounded)
+            {
                 _rigidBody.velocity = transform.forward * force;
+            }
         }
 
         public void Brake(float brakeSpeed)
         {
             _rigidBody.velocity = Vector3.MoveTowards(_rigidBody.velocity, Vector3.zero, brakeSpeed * Time.deltaTime);
+            if (_rigidBody.velocity.magnitude < 10)
+            {
+                _rigidBody.velocity = Vector3.zero;
+            }
         }
 
         public void Respawn(Transform point)
@@ -136,10 +145,10 @@ namespace Runtime.BaseCar
             //    _rigidBody.velocity = -transform.forward * _tenisonForce * (1f - Speed / MaxSpeed);
             //}
 
-            if(_playerInput.YRotation == 0)
-            {
-                _rigidBody.velocity = Vector3.zero;
-            }
+            //if(_playerInput.YRotation == 0)
+            //{
+            //    _rigidBody.velocity = Vector3.zero;
+            //}
         }
     }
 }
