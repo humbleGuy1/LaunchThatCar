@@ -23,7 +23,7 @@ public class BlendingModeSwticher : MonoBehaviour
         }
         else
         {
-            _transposer.m_BindingMode = CinemachineTransposer.BindingMode.LockToTargetOnAssign;
+            _transposer.m_BindingMode = CinemachineTransposer.BindingMode.SimpleFollowWithWorldUp;
         }
     }
 }
