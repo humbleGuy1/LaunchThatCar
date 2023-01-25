@@ -8,6 +8,16 @@ namespace Runtime.BaseCar
         [SerializeField] private CarMover _carMover;
 
         public CarMover CarMover => _carMover;
+
+        public void AttachToPlatform(MovingPlatform platform)
+        {
+            transform.SetParent(platform.transform);
+        }
+
+        public void DetachFromPlatform()
+        {
+            transform.SetParent(null);
+        }
     }
 }
 
