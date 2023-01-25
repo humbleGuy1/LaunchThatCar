@@ -1,4 +1,5 @@
 using Dreamteck;
+using Runtime.BaseCar;
 using UnityEngine;
 
 public class CarController : MonoBehaviour
@@ -10,6 +11,8 @@ public class CarController : MonoBehaviour
     private float _startRotation;
     private float _deltaRotation;
     private float _xRotation;
+
+    public float RotationSensitivity => _rotationSensitivity;
 
     private void Awake()
     {
@@ -27,11 +30,9 @@ public class CarController : MonoBehaviour
         _rotationSensitivity = sens;
     }
 
-
-
-    public void Rotate(float xRotation)
+    public void Rotate(PlayerInput playerInput)
     {
-        _xRotation += xRotation;
+        _xRotation += playerInput.XRotation;
         Quaternion savedRotation = transform.rotation;
         Quaternion targetRotation = Quaternion.Euler(new Vector3(transform.eulerAngles.x, _xRotation, transform.eulerAngles.z));
         transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, _rotationSensitivity*10);

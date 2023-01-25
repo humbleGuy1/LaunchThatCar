@@ -1,5 +1,7 @@
 using Dreamteck;
+using System.Collections;
 using System.Linq;
+using System.Timers;
 using UnityEngine;
 
 namespace Runtime.BaseCar
@@ -18,14 +20,12 @@ namespace Runtime.BaseCar
 
         private AngularVelocityCalculator _angularDragCalculator;
         private CarRespawn _carRespawn;
-        private float _elapsedTime;
-        private float _maxDistance = 1;
-        private float _currentDistance;
-        private bool isConstant;
+        private bool _needToMove;
 
         private readonly float _relaxTime = 0.5f;
 
-        public float MaxStopSpeed { get; private set; } = 50f;
+        public float AcceleratingTime { get; private set; } = 0.1f;
+        public float MaxStopSpeed { get; private set; } = 75f;
         public float StopSpeed { get; private set; } = 200f;
         public float MaxFlySpeed { get; private set; } = 50f;
         public float Speed { get; private set; }
@@ -55,7 +55,6 @@ namespace Runtime.BaseCar
             if(_wheels.IsGrounded == false)
             {
                 _rigidBody.velocity = Vector3.ClampMagnitude(_rigidBody.velocity, MaxFlySpeed);
-                //_rigidBody.angularVelocity *= 1.2f;
             }
 
             if (_playerInput.IsButtonDown)
@@ -65,13 +64,13 @@ namespace Runtime.BaseCar
 
             if (_playerInput.IsButtonUp && IsMoving == false)
             {
-                MoveForward(Speed);
-            }            
+                _needToMove = true;
+            }
 
-            if(_playerInput.IsButtonHold && IsMoving == false)
+            if (_playerInput.IsButtonHold && IsMoving == false)
             {
                 Speed = _converter.ConvertYDelta(_playerInput.DeltaY);
-                _carController.Rotate(_playerInput.XRotation);
+                _carController.Rotate(_playerInput);
                 Pull();
             }
 
@@ -84,9 +83,15 @@ namespace Runtime.BaseCar
 
         private void FixedUpdate()
         {
-            if (_playerInput.IsButtonHold && _wheels.IsGrounded && _rigidBody.velocity.magnitude < MaxStopSpeed)
+            if (_playerInput.IsButtonHold && _wheels.IsGrounded && _rigidBody.velocity.magnitude < MaxStopSpeed &&_needToMove == false)
             {
                 Brake(StopSpeed);
+            }
+
+            if (_needToMove)
+            {
+                MoveForward(Speed);
+                _needToMove = false;
             }
         }
 
@@ -122,7 +127,8 @@ namespace Runtime.BaseCar
         public void Brake(float brakeSpeed)
         {
             _rigidBody.velocity = Vector3.MoveTowards(_rigidBody.velocity, Vector3.zero, brakeSpeed * Time.deltaTime);
-            if (_rigidBody.velocity.magnitude < 10)
+
+            if (_rigidBody.velocity.magnitude < brakeSpeed * Time.deltaTime)
             {
                 _rigidBody.velocity = Vector3.zero;
             }
@@ -132,6 +138,7 @@ namespace Runtime.BaseCar
         {
             StartCoroutine(_carRespawn.Respawn(point));
         }
+
 
         private void Pull()
         {

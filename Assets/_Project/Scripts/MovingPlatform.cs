@@ -13,12 +13,12 @@ public class MovingPlatform : MonoBehaviour
 
     private void Start()
     {
-        _startValue = transform.position;
+        //_startValue = transform.position;
 
-        Sequence sequence = DOTween.Sequence();
-        sequence.Append(transform.DOMove(_endValue.position, _duration));    
-        sequence.Append(transform.DOMove(_startValue, _duration)); 
-        sequence.SetLoops(-1, LoopType.Restart).SetEase(_motionCurve);
+        //Sequence sequence = DOTween.Sequence();
+        //sequence.Append(transform.DOMove(_endValue.position, _duration));    
+        //sequence.Append(transform.DOMove(_startValue, _duration)); 
+        //sequence.SetLoops(-1, LoopType.Restart).SetEase(_motionCurve);
     }
 
     private void OnTriggerEnter(Collider other)

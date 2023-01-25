@@ -34,7 +34,6 @@ public class LevelCheckPoints : MonoBehaviour
 
     public void OnDropDownChanged(int index)
     {
-        Debug.Log(index);
         _carMover.Respawn(_respawnPoints[index].SpawnPoint.transform);
     }
 }
