@@ -8,7 +8,7 @@ public class Respawner : MonoBehaviour
     [SerializeField] private PlayerInput _playterInput;
     [SerializeField] protected RespawnPoint _respawnPoint;
 
-    private RespawnPoint _currentRespawnPoint;
+    public RespawnPoint CurrentRespawnPoint;
 
     private IRespawnable _respawnable;
 
@@ -31,11 +31,11 @@ public class Respawner : MonoBehaviour
 
     public void SetRespawnPoint(RespawnPoint respawnPoint)
     {
-        _currentRespawnPoint = respawnPoint;
+        CurrentRespawnPoint = respawnPoint;
     }
 
     public void Respawn()
     {
-        _respawnable.Respawn(_currentRespawnPoint.SpawnPoint.transform);
+        _respawnable.Respawn(CurrentRespawnPoint.SpawnPoint.transform);
     }
 }

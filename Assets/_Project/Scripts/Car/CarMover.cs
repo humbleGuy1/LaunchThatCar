@@ -60,7 +60,11 @@ namespace Runtime.BaseCar
             }
 
             if (_playerInput.IsButtonDown)
+
             {
+                if (_positionProperty.IsUpsideDown)
+                    Respawn(transform.position + Vector3.up*2, Quaternion.Euler(0, transform.eulerAngles.y, 0));
+
                 _carController.SetStartRotation();
             }
 
@@ -166,7 +170,12 @@ namespace Runtime.BaseCar
 
         public void Respawn(Transform point)
         {
-            StartCoroutine(_carRespawn.Respawn(point));
+            Respawn(point.position, point.rotation);
+        }
+
+        public void Respawn(Vector3 position, Quaternion rotation)
+        {
+            StartCoroutine(_carRespawn.Respawn(position, rotation));
             _carController.SetStartRotation();
         }
 

@@ -18,15 +18,19 @@ public class CarRespawn
 
     public IEnumerator Respawn(Transform point)
     {
+        yield return Respawn(point.position, point.rotation);
+    }
+
+    public IEnumerator Respawn(Vector3 position, Quaternion rotation)
+    {
         IsRespawning = true;
-        _transform.position = point.position;
-        _transform.rotation = point.rotation;
+        _transform.position = position;
+        _transform.rotation = rotation;
         _rigidBody.isKinematic = true;
         _wheelStatus.Stop();
         yield return null;
         _rigidBody.isKinematic = false;
         yield return new WaitForSeconds(0.4f);
-        //yield return new WaitForSeconds(0.7f);
         _wheelStatus.Resume();
         IsRespawning = false;
     }

@@ -28,7 +28,7 @@ public class PositionProperty : MonoBehaviour
 
         TiltSideAngle = GetTiltAngle(transform.eulerAngles.z);
 
-        IsUpsideDown = Mathf.Abs(TiltSideAngle) > 75 || Mathf.Abs(TiltForwardAngle) > 80;
+        IsUpsideDown = GroundCheck.Grounded && (Mathf.Abs(TiltSideAngle) > 85 || Mathf.Abs(TiltForwardAngle) > 85);
 
         UpdateForwardAlongSuface();
     }
