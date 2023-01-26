@@ -28,6 +28,8 @@ public class CameraZoomer : MonoBehaviour
     {
         _camera.m_Lens.FieldOfView = Mathf.Lerp(_maxFOV, _minFOV, _carMover.Speed/_carMover.MaxSpeed);
         _currentFOV = _camera.m_Lens.FieldOfView;
+
+
     }
 
     private IEnumerator ZoomingOut()

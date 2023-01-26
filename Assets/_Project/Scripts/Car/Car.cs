@@ -9,7 +9,7 @@ namespace Runtime.BaseCar
 
         public CarMover CarMover => _carMover;
 
-        public void AttachToPlatform(MovingPlatform platform)
+        public void AttachToPlatform(AttachableObject platform)
         {
             transform.SetParent(platform.transform);
         }

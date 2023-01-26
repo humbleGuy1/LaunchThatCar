@@ -17,6 +17,7 @@ namespace Runtime.BaseCar
         public bool IsButtonHold {get; private set;}
         public float DeltaY { get; private set; }
         public float XRotation { get; private set; }
+        public float xXxRotationxXx { get; private set; }
         public float YRotation { get; private set; }
 
         private void Update()
@@ -37,11 +38,13 @@ namespace Runtime.BaseCar
             if (IsButtonUp)
             {
                 XRotation = 0;
+                xXxRotationxXx = 0;
             }
 
             if (IsButtonHold)
             {
                 XRotation = Input.GetAxis(MouseX);
+                xXxRotationxXx += Input.GetAxis(MouseX);
                 YRotation = Input.GetAxis(MouseY);
 
                 _endPoint = Input.mousePosition;

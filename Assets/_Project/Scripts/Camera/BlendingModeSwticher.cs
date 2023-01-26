@@ -25,5 +25,6 @@ public class BlendingModeSwticher : MonoBehaviour
         {
             _transposer.m_BindingMode = CinemachineTransposer.BindingMode.SimpleFollowWithWorldUp;
         }
+        _transposer.m_FollowOffset.x = 0;
     }
 }
