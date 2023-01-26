@@ -10,7 +10,7 @@ public class Ground : MonoBehaviour
     {
         if (collider.TryGetComponent(out Wheel wheel))
         {
-            wheel.SetMaxVelocity(Property.MaxVelocity, Property.MaxAngularDrag);
+            wheel.SetMaxVelocity(Property);
         }
     }
 }

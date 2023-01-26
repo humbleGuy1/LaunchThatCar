@@ -18,16 +18,18 @@ namespace Runtime.BaseCar
         [SerializeField] private CarController _carController;
         [SerializeField] private float _tenisonForce;
 
+        [field:SerializeField] public float MaxFlySpeed { get; private set; } = 50f;
+        [field: SerializeField] public float StopSpeed { get; private set; } = 200f;
+        [field: SerializeField] public float MaxStopSpeed { get; private set; } = 75f;
+
         private AngularVelocityCalculator _angularDragCalculator;
         private CarRespawn _carRespawn;
         private bool _needToMove;
+        private bool _itsMovingTime;
 
         private readonly float _relaxTime = 0.5f;
 
         public float AcceleratingTime { get; private set; } = 0.1f;
-        public float MaxStopSpeed { get; private set; } = 75f;
-        public float StopSpeed { get; private set; } = 200f;
-        public float MaxFlySpeed { get; private set; } = 50f;
         public float Speed { get; private set; }
         public float RBVelocity => _rigidBody.velocity.magnitude;
         public float MaxSpeed => _converter.MaxForce;
@@ -90,8 +92,12 @@ namespace Runtime.BaseCar
 
             if (_needToMove)
             {
-                MoveForward(Speed);
-                _needToMove = false;
+                StartCoroutine(MovingForward(Speed));
+                if (_itsMovingTime)
+                {
+                    _rigidBody.velocity = transform.forward * Speed;
+
+                }
             }
         }
 
@@ -120,8 +126,27 @@ namespace Runtime.BaseCar
         {
             if (_wheels.IsGrounded)
             {
-                _rigidBody.velocity = transform.forward * force;
+                //_needToMove = true;
+                _rigidBody.velocity = transform.forward* force;
             }
+        }
+
+        public IEnumerator MovingForward(float force)
+        {
+            _needToMove = false;
+            float elapsedTime = 0;
+            float acceleratingTime = 3f;
+            _itsMovingTime = true;
+
+            while(_wheels.IsGrounded && elapsedTime < acceleratingTime)
+            {
+                elapsedTime += Time.deltaTime;
+                //_rigidBody.MovePosition(_positionProperty.GroundPoint);
+
+                yield return null;
+            }
+
+            _itsMovingTime = false;
         }
 
         public void Brake(float brakeSpeed)

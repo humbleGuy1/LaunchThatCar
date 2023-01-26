@@ -10,6 +10,10 @@ public class SpeedBust : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         if (other.TryGetComponent(out CarMover carMover))
+        {
             carMover.MoveForward(_speed);
+            //StartCoroutine(carMover.MovingForward(_speed));
+
+        }
     }
 }

@@ -9,6 +9,7 @@ public class Wheel : MonoBehaviour
 
     public float MaxVelocity { get; private set; }
     public float MaxAngularDrag { get; private set; }
+    public float MaxFlySpeed { get; private set; }
 
     public bool IsGrounded => _wheelCollider.isGrounded;
 
@@ -19,10 +20,16 @@ public class Wheel : MonoBehaviour
         _wheelView.transform.position = pos;
     }
 
-    public void SetMaxVelocity(float maxSpeed, float maxAngularDrag)
+    public void SetMaxVelocity(GroundProperty groundProperty)
     {
-        MaxVelocity = maxSpeed;
-        MaxAngularDrag = maxAngularDrag;
+        MaxVelocity = groundProperty.MaxVelocity;
+        MaxAngularDrag = groundProperty.MaxAngularDrag;
+        MaxFlySpeed = groundProperty.MaxFlySpeed;
+    }
+
+    public void StartMotor()
+    {
+        _wheelCollider.motorTorque = 1;
     }
 
     public void Stop()

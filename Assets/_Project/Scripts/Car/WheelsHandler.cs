@@ -29,6 +29,14 @@ public class WheelsHandler
 
     }
 
+    public void Start()
+    {
+        foreach (var wheel in _wheels)
+        {
+            wheel.StartMotor();
+        }
+    }
+
     public void Stop()
     {
         foreach (var wheel in _wheels)
