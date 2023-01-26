@@ -8,7 +8,7 @@ public class Respawner : MonoBehaviour
     [SerializeField] private PlayerInput _playterInput;
     [SerializeField] protected RespawnPoint _respawnPoint;
 
-    public RespawnPoint CurrentRespawnPoint;
+    public RespawnPoint CurrentRespawnPoint { get; private set; }
 
     private IRespawnable _respawnable;
 

@@ -15,7 +15,7 @@ public class CarController : MonoBehaviour
 
     private void Awake()
     {
-        _xRotation = GetAngle(transform.eulerAngles.y);
+        SetStartRotation();
     }
 
     public void SetStartRotation()
