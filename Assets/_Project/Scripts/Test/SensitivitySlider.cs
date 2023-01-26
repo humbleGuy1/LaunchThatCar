@@ -9,6 +9,6 @@ public class SensitivitySlider : MonoBehaviour
 
     private void Update()
     {
-        _sliderView.SetSliderValue(_carController.RotationSensitivity, 4);
+        _sliderView.SetSliderValue(_carController.RotationSensitivity, 10);
     }
 }

@@ -4,12 +4,9 @@ using UnityEngine;
 
 public class CarController : MonoBehaviour
 {
-    [SerializeField, Range(0, 4f)] private float _rotationSensitivity;
+    [SerializeField, Range(0, 10f)] private float _rotationSensitivity;
     [SerializeField, Range(0, 1f)] private float _rotationLimiter;
 
-    private float _currentRotation;
-    private float _startRotation;
-    private float _deltaRotation;
     private float _xRotation;
 
     public float RotationSensitivity => _rotationSensitivity;
@@ -19,9 +16,8 @@ public class CarController : MonoBehaviour
         _xRotation = GetAngle(transform.eulerAngles.y);
     }
 
-    public void SetStartRotation(float startRotation)
+    public void SetStartRotation()
     {
-        _startRotation = startRotation;
         _xRotation = GetAngle(transform.eulerAngles.y);
     }
 
@@ -30,17 +26,12 @@ public class CarController : MonoBehaviour
         _rotationSensitivity = sens;
     }
 
-    public void Rotate(PlayerInput playerInput)
+    public void Rotate(PlayerInput playerInput, float speed, float maxSpeed)
     {
-        _xRotation += playerInput.XRotation;
-        Quaternion savedRotation = transform.rotation;
+        float calculatedSensitivity = Mathf.Lerp(_rotationSensitivity, 1, speed / maxSpeed);
+        _xRotation += playerInput.XRotation*calculatedSensitivity;
         Quaternion targetRotation = Quaternion.Euler(new Vector3(transform.eulerAngles.x, _xRotation, transform.eulerAngles.z));
-        transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, _rotationSensitivity*10);
-        _currentRotation = transform.rotation.y;
-        _deltaRotation = _startRotation - _currentRotation;
-
-        if (Mathf.Abs(_deltaRotation) >= _rotationLimiter)
-            transform.rotation = savedRotation;
+        transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, 10* Time.deltaTime);
     }
 
     private float GetAngle(float eulerAngle)

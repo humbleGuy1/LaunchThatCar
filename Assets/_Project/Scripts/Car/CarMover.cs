@@ -33,7 +33,7 @@ namespace Runtime.BaseCar
         public float Speed { get; private set; }
         public float RBVelocity => _rigidBody.velocity.magnitude;
         public float MaxSpeed => _converter.MaxForce;
-        public bool IsMoving => _rigidBody.velocity.magnitude>0.2f;
+        public bool IsMoving => _rigidBody.velocity.magnitude>0.01f;
 
         public WheelsHandler Wheels => _wheels;
 
@@ -61,7 +61,7 @@ namespace Runtime.BaseCar
 
             if (_playerInput.IsButtonDown)
             {
-                _carController.SetStartRotation(transform.rotation.y);
+                _carController.SetStartRotation();
             }
 
             if (_playerInput.IsButtonUp && IsMoving == false)
@@ -72,8 +72,13 @@ namespace Runtime.BaseCar
             if (_playerInput.IsButtonHold && IsMoving == false)
             {
                 Speed = _converter.ConvertYDelta(_playerInput.DeltaY);
-                _carController.Rotate(_playerInput);
+                _carController.Rotate(_playerInput, Speed, MaxSpeed);
                 Pull();
+            }
+
+            if(_playerInput.IsButtonHold && IsMoving)
+            {
+                _carController.Rotate(_playerInput, _rigidBody.velocity.magnitude, MaxSpeed);
             }
 
             if (IsMoving)
@@ -96,7 +101,6 @@ namespace Runtime.BaseCar
                 if (_itsMovingTime)
                 {
                     _rigidBody.velocity = transform.forward * Speed;
-
                 }
             }
         }
@@ -152,6 +156,7 @@ namespace Runtime.BaseCar
         public void Brake(float brakeSpeed)
         {
             _rigidBody.velocity = Vector3.MoveTowards(_rigidBody.velocity, Vector3.zero, brakeSpeed * Time.deltaTime);
+            
 
             if (_rigidBody.velocity.magnitude < brakeSpeed * Time.deltaTime)
             {
@@ -162,6 +167,7 @@ namespace Runtime.BaseCar
         public void Respawn(Transform point)
         {
             StartCoroutine(_carRespawn.Respawn(point));
+            _carController.SetStartRotation();
         }
 
 

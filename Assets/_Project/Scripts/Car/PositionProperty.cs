@@ -11,24 +11,24 @@ public class PositionProperty : MonoBehaviour
     [SerializeField] private Transform _forward;
     [SerializeField] private Transform _back;
 
+    [field: SerializeField] public GroundCheck GroundCheck { get; private set; }
+
     public Vector3 Forward { get; private set; }
     public Vector3 GroundPoint { get; private set; }
     public Quaternion ForwardAlongSurface { get; private set; }
     public bool IsUpsideDown { get; private set; }
-    public float TiltForward { get; private set; }
-    public float TiltSide { get; private set; }
+    public float TiltForwardAngle { get; private set; }
+    public float TiltSideAngle { get; private set; }
     public Transform Up => _up;
     public Transform Down => _bottom;
 
     private void Update()
     {
-        var distance = _up.position.y - _bottom.position.y;
+        TiltForwardAngle = GetTiltAngle(transform.localEulerAngles.x);
 
-        TiltForward = GetTiltAngle(transform.localEulerAngles.x);
+        TiltSideAngle = GetTiltAngle(transform.eulerAngles.z);
 
-        TiltSide = GetTiltAngle(transform.eulerAngles.z);
-        
-        IsUpsideDown = distance < 0.2f;
+        IsUpsideDown = Mathf.Abs(TiltSideAngle) > 75 || Mathf.Abs(TiltForwardAngle) > 80;
 
         UpdateForwardAlongSuface();
     }
@@ -45,7 +45,7 @@ public class PositionProperty : MonoBehaviour
 
     private void UpdateForwardAlongSuface()
     {
-        if(Physics.Raycast(_up.position, Vector3.down, out RaycastHit hit,10f, _layerMask))
+        if(Physics.Raycast(_up.position, Vector3.down, out RaycastHit hit,2f, _layerMask))
         {
             Vector3 forward = transform.forward;
             forward.y = 0;
