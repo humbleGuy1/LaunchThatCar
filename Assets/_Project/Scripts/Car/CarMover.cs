@@ -33,7 +33,8 @@ namespace Runtime.BaseCar
         public float Speed { get; private set; }
         public float RBVelocity => _rigidBody.velocity.magnitude;
         public float MaxSpeed => _converter.MaxForce;
-        public bool IsMoving => _rigidBody.velocity.magnitude>0.01f;
+        public bool IsMoving => _rigidBody.velocity.magnitude > 0.01f;
+        public bool CanWRUMWRUM => _rigidBody.velocity.magnitude < 10f;
 
         public WheelsHandler Wheels => _wheels;
 
@@ -68,12 +69,12 @@ namespace Runtime.BaseCar
                 _carController.SetStartRotation();
             }
 
-            if (_playerInput.IsButtonUp && IsMoving == false)
+            if (_playerInput.IsButtonUp && CanWRUMWRUM)
             {
                 _needToMove = true;
             }
 
-            if (_playerInput.IsButtonHold && IsMoving == false)
+            if (_playerInput.IsButtonHold && CanWRUMWRUM)
             {
                 Speed = _converter.ConvertYDelta(_playerInput.DeltaY);
                 _carController.Rotate(_playerInput, Speed, MaxSpeed);
@@ -159,12 +160,16 @@ namespace Runtime.BaseCar
 
         public void Brake(float brakeSpeed)
         {
-            _rigidBody.velocity = Vector3.MoveTowards(_rigidBody.velocity, Vector3.zero, brakeSpeed * Time.deltaTime);
+            Vector3 targetVelocity = _rigidBody.velocity;
+            targetVelocity.x = 0;
+            targetVelocity.z = 0;
+            targetVelocity.y = 0;
+            _rigidBody.velocity = Vector3.MoveTowards(_rigidBody.velocity, targetVelocity, brakeSpeed * Time.deltaTime);
             
 
             if (_rigidBody.velocity.magnitude < brakeSpeed * Time.deltaTime)
             {
-                _rigidBody.velocity = Vector3.zero;
+                _rigidBody.velocity = targetVelocity;
             }
         }
 
