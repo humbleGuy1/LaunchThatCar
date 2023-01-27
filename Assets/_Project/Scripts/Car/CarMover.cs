@@ -34,7 +34,7 @@ namespace Runtime.BaseCar
         public float RBVelocity => _rigidBody.velocity.magnitude;
         public float MaxSpeed => _converter.MaxForce;
         public bool IsMoving => _rigidBody.velocity.magnitude > 0.01f;
-        public bool CanWRUMWRUM => _rigidBody.velocity.magnitude < 10f;
+        public bool CanWRUMWRUM => _rigidBody.velocity.magnitude < 10f && _wheels.IsGrounded;
 
         public WheelsHandler Wheels => _wheels;
 
@@ -61,10 +61,9 @@ namespace Runtime.BaseCar
             }
 
             if (_playerInput.IsButtonDown)
-
             {
                 if (_positionProperty.IsOnCarcase)
-                    Respawn(transform.position + Vector3.up*2, Quaternion.Euler(0, transform.eulerAngles.y, 0));
+                    Respawn(transform.position + Vector3.up * 2, Quaternion.Euler(0, transform.eulerAngles.y, 0));
 
                 _carController.SetStartRotation();
             }
@@ -74,13 +73,18 @@ namespace Runtime.BaseCar
                 _needToMove = true;
             }
 
-            if (_playerInput.IsButtonHold && CanWRUMWRUM && _wheels.IsGrounded)
+            if (_playerInput.IsButtonHold)
             {
-                Speed = _converter.ConvertYDelta(_playerInput.DeltaY);
-                _carController.Rotate(_playerInput, Speed, MaxSpeed);
+                Speed = _converter.ConvertYDelta();
             }
 
-            if(_playerInput.IsButtonHold && IsMoving && _wheels.IsGrounded)
+            if (_playerInput.IsButtonHold && CanWRUMWRUM)
+            {
+                _carController.Rotate(_playerInput, Speed, MaxSpeed);
+                Pull();
+            }
+
+            if(_playerInput.IsButtonHold && IsMoving)
             {
                 _carController.Rotate(_playerInput, _rigidBody.velocity.magnitude, MaxSpeed);
             }
@@ -134,6 +138,7 @@ namespace Runtime.BaseCar
         {
             if (_wheels.IsGrounded)
             {
+                //_needToMove = true;
                 _rigidBody.velocity = transform.forward* force;
             }
         }
@@ -148,6 +153,7 @@ namespace Runtime.BaseCar
             while(_wheels.IsGrounded && elapsedTime < acceleratingTime)
             {
                 elapsedTime += Time.deltaTime;
+                //_rigidBody.MovePosition(_positionProperty.GroundPoint);
 
                 yield return null;
             }
@@ -160,6 +166,7 @@ namespace Runtime.BaseCar
             Vector3 targetVelocity = _rigidBody.velocity;
             targetVelocity.x = 0;
             targetVelocity.z = 0;
+            targetVelocity.y = 0;
             _rigidBody.velocity = Vector3.MoveTowards(_rigidBody.velocity, targetVelocity, brakeSpeed * Time.deltaTime);
             
 
@@ -178,6 +185,25 @@ namespace Runtime.BaseCar
         {
             StartCoroutine(_carRespawn.Respawn(position, rotation));
             _carController.SetStartRotation();
+        }
+
+
+        private void Pull()
+        {
+            //if (_playerInput.YRotation < 0 && Speed < MaxSpeed)
+            //{
+            //    _rigidBody.velocity = -transform.forward * _tenisonForce * (1f - Speed / MaxSpeed);
+            //}
+
+            //if (_playerInput.YRotation > 0 && Speed > 0)
+            //{
+            //    _rigidBody.velocity = -transform.forward * _tenisonForce * (1f - Speed / MaxSpeed);
+            //}
+
+            //if(_playerInput.YRotation == 0)
+            //{
+            //    _rigidBody.velocity = Vector3.zero;
+            //}
         }
     }
 }

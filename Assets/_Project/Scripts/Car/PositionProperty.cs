@@ -28,7 +28,7 @@ public class PositionProperty : MonoBehaviour
 
         TiltSideAngle = GetTiltAngle(transform.eulerAngles.z);
 
-        Debug.Log(GroundCheck.Grounded);
+        //Debug.Log(GroundCheck.Grounded);
         IsOnCarcase = GroundCheck.Grounded && (Mathf.Abs(TiltSideAngle) > 85 || Mathf.Abs(TiltForwardAngle) > 85);
 
         UpdateForwardAlongSuface();
