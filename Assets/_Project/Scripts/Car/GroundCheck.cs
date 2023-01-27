@@ -4,8 +4,15 @@ public class GroundCheck : MonoBehaviour
 {
     public bool Grounded { get; private set; }
 
-    private void OnTriggerStay(Collider other)
+    private void OnTriggerEnter(Collider other)
     {
-        Grounded = other.TryGetComponent(out Ground ground);
+        if(other.TryGetComponent(out Ground ground))
+            Grounded = true;
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.TryGetComponent(out Ground ground))
+            Grounded = false;
     }
 }

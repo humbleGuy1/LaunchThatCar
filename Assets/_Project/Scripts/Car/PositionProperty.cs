@@ -16,7 +16,7 @@ public class PositionProperty : MonoBehaviour
     public Vector3 Forward { get; private set; }
     public Vector3 GroundPoint { get; private set; }
     public Quaternion ForwardAlongSurface { get; private set; }
-    public bool IsUpsideDown { get; private set; }
+    public bool IsOnCarcase { get; private set; }
     public float TiltForwardAngle { get; private set; }
     public float TiltSideAngle { get; private set; }
     public Transform Up => _up;
@@ -28,7 +28,8 @@ public class PositionProperty : MonoBehaviour
 
         TiltSideAngle = GetTiltAngle(transform.eulerAngles.z);
 
-        IsUpsideDown = GroundCheck.Grounded && (Mathf.Abs(TiltSideAngle) > 85 || Mathf.Abs(TiltForwardAngle) > 85);
+        Debug.Log(GroundCheck.Grounded);
+        IsOnCarcase = GroundCheck.Grounded && (Mathf.Abs(TiltSideAngle) > 85 || Mathf.Abs(TiltForwardAngle) > 85);
 
         UpdateForwardAlongSuface();
     }
