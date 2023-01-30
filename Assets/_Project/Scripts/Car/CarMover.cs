@@ -29,8 +29,7 @@ namespace Runtime.BaseCar
 
         private readonly float _relaxTime = 0.5f;
 
-        public float AcceleratingTime { get; private set; } = 0.1f;
-        public float Speed { get; private set; }
+        public float ChargedSpeed { get; private set; }
         public float RBVelocity => _rigidBody.velocity.magnitude;
         public float MaxSpeed => _converter.MaxForce;
         public bool IsMoving => _rigidBody.velocity.magnitude > 0.01f;
@@ -75,12 +74,12 @@ namespace Runtime.BaseCar
 
             if (_playerInput.IsButtonHold)
             {
-                Speed = _converter.ConvertYDelta();
+                ChargedSpeed = _converter.ConvertYDelta();
             }
 
             if (_playerInput.IsButtonHold && CanWRUMWRUM)
             {
-                _carController.Rotate(_playerInput, Speed, MaxSpeed);
+                _carController.Rotate(_playerInput, ChargedSpeed, MaxSpeed);
                 Pull();
             }
 
@@ -92,7 +91,13 @@ namespace Runtime.BaseCar
             if (IsMoving)
             {
                 float speed = MaxSpeed / _relaxTime;
-                Speed = Mathf.MoveTowards(Speed, 0, speed * Time.deltaTime);
+                ChargedSpeed = Mathf.MoveTowards(ChargedSpeed, 0, speed * Time.deltaTime);
+            }
+
+            if (_wheels.IsGrounded)
+            {
+                float gripForce = Mathf.Lerp(0, 150, RBVelocity / MaxSpeed);
+                _rigidBody.AddForce(-transform.up * gripForce, ForceMode.Acceleration);
             }
         }
 
@@ -105,10 +110,10 @@ namespace Runtime.BaseCar
 
             if (_needToMove)
             {
-                StartCoroutine(MovingForward(Speed));
+                StartCoroutine(MovingForward(ChargedSpeed));
                 if (_itsMovingTime)
                 {
-                    _rigidBody.velocity = transform.forward * Speed;
+                    _rigidBody.velocity = transform.forward * ChargedSpeed;
                 }
             }
         }
@@ -166,7 +171,6 @@ namespace Runtime.BaseCar
             Vector3 targetVelocity = _rigidBody.velocity;
             targetVelocity.x = 0;
             targetVelocity.z = 0;
-            targetVelocity.y = 0;
             _rigidBody.velocity = Vector3.MoveTowards(_rigidBody.velocity, targetVelocity, brakeSpeed * Time.deltaTime);
             
 

@@ -15,6 +15,7 @@ public class LevelCheckPoints : MonoBehaviour
 
     private void Awake()
     {
+        SetUp();
         _dropdown.ClearOptions();
         List<TMP_Dropdown.OptionData> options = new List<TMP_Dropdown.OptionData>();
         for (int i = 0; i < _respawnPoints.Count; i++)

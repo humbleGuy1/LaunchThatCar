@@ -26,7 +26,7 @@ public class CameraZoomer : MonoBehaviour
 
     public void ZoomIn()
     {
-        _camera.m_Lens.FieldOfView = Mathf.Lerp(_maxFOV, _minFOV, _carMover.Speed/_carMover.MaxSpeed);
+        _camera.m_Lens.FieldOfView = Mathf.Lerp(_maxFOV, _minFOV, _carMover.ChargedSpeed/_carMover.MaxSpeed);
         _currentFOV = _camera.m_Lens.FieldOfView;
 
 

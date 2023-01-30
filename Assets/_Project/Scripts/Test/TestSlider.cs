@@ -10,6 +10,6 @@ public class TestSlider : MonoBehaviour
     private void Update()
     {
         _slider.maxValue = _carEngine.MaxSpeed;
-        _slider.value = _carEngine.Speed;
+        _slider.value = _carEngine.ChargedSpeed;
     }
 }

@@ -21,7 +21,7 @@ public class ForceArrow : MonoBehaviour
 
     private void Update()
     {
-        float lerp = _carMover.Speed / _carMover.MaxSpeed;
+        float lerp = _carMover.ChargedSpeed / _carMover.MaxSpeed;
         _arrow.transform.localScale = Vector3.Lerp(_initialScale, _targetScale, lerp);
         _arrow.transform.localPosition = Vector3.Lerp(Vector3.zero, Vector3.forward * _maxSize/2, lerp);
         _meshRenderer.enabled = _arrow.transform.localScale.z > 0;
