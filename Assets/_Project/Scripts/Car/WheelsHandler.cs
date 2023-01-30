@@ -6,7 +6,8 @@ using UnityEngine;
 public class WheelsHandler
 {
     [SerializeField] private Wheel[] _wheels;
-    
+
+    public float MaxGrip { get; private set; }
     public float MaxFlySpeed { get; private set; }
     public float AverageMaxVelocity { get; private set; }
     public float MaxAngularDrag { get; private set; }
@@ -28,6 +29,7 @@ public class WheelsHandler
         AverageMaxVelocity = GetMaxVelocityByGround();
         MaxAngularDrag = GetMaxAngularDrag();
         MaxFlySpeed = GetMaxFlySpeed();
+        MaxGrip = GetAverageGrip();
     }
 
     public void Stop()
@@ -44,6 +46,18 @@ public class WheelsHandler
         {
             wheel.Resume();
         }
+    }
+
+    private float GetAverageGrip()
+    {
+        float value = 0;
+
+        foreach (var wheel in _wheels)
+        {
+            value += wheel.MaxGrip;
+        }
+
+        return value / _wheels.Length;
     }
 
     private float GetMaxFlySpeed()

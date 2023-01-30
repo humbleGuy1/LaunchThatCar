@@ -40,7 +40,7 @@ public class CarController : MonoBehaviour
 
     public void Rotate(PlayerInput playerInput, float speed, float maxSpeed)
     {
-        float calculatedSensitivity = Mathf.Lerp(_rotationSensitivity, 1, speed / maxSpeed);
+        float calculatedSensitivity = Mathf.Lerp(_rotationSensitivity, 0.3f, speed / maxSpeed);
 
         if (_isNewRotationType == false)
         {

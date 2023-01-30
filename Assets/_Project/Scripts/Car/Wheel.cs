@@ -11,6 +11,7 @@ public class Wheel : MonoBehaviour
     public float MaxAngularDrag { get; private set; }
     public float MaxFlySpeed { get; private set; }
     public float MaxDrag { get; private set; }
+    public float MaxGrip { get; private set; }
 
     public bool IsGrounded => _wheelCollider.isGrounded;
 
@@ -27,6 +28,7 @@ public class Wheel : MonoBehaviour
         MaxAngularDrag = groundProperty.MaxAngularDrag;
         MaxFlySpeed = groundProperty.MaxFlySpeed;
         MaxDrag = groundProperty.MaxDrag;
+        MaxGrip = groundProperty.MaxGrip;
     }
 
     public void StartMotor()
