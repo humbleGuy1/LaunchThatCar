@@ -144,8 +144,8 @@ namespace Runtime.BaseCar
             if (_wheels.IsGrounded)
             {
                 //_needToMove = true;
-                _rigidBody.velocity = transform.forward* force;
             }
+                _rigidBody.velocity = transform.forward* force;
         }
 
         public IEnumerator MovingForward(float force)
