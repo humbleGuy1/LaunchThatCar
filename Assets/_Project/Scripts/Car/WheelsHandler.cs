@@ -7,6 +7,7 @@ public class WheelsHandler
 {
     [SerializeField] private Wheel[] _wheels;
     
+    public float MaxFlySpeed { get; private set; }
     public float AverageMaxVelocity { get; private set; }
     public float MaxAngularDrag { get; private set; }
     public int GroundedWheelCount { get; private set; }
@@ -26,15 +27,7 @@ public class WheelsHandler
 
         AverageMaxVelocity = GetMaxVelocityByGround();
         MaxAngularDrag = GetMaxAngularDrag();
-
-    }
-
-    public void Start()
-    {
-        foreach (var wheel in _wheels)
-        {
-            wheel.StartMotor();
-        }
+        MaxFlySpeed = GetMaxFlySpeed();
     }
 
     public void Stop()
@@ -51,6 +44,18 @@ public class WheelsHandler
         {
             wheel.Resume();
         }
+    }
+
+    private float GetMaxFlySpeed()
+    {
+        float value = 0;
+
+        foreach (var wheel in _wheels)
+        {
+            value += wheel.MaxFlySpeed;
+        }
+
+        return value / _wheels.Length;
     }
 
     private float GetMaxAngularDrag()
