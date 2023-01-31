@@ -13,13 +13,25 @@ public class Wheel : MonoBehaviour
     public float MaxDrag { get; private set; }
     public float MaxGrip { get; private set; }
 
-    public bool IsGrounded => _wheelCollider.isGrounded;
+    public bool IsGrounded;
 
     private void Update()
     {
         _wheelCollider.GetWorldPose(out Vector3 pos, out Quaternion qat);
         _wheelView.transform.rotation = qat;
         _wheelView.transform.position = pos;
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.TryGetComponent(out Ground ground))
+            IsGrounded = true;
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if(other.TryGetComponent(out Ground ground))
+            IsGrounded = false;
     }
 
     public void SetMaxVelocity(GroundProperty groundProperty)

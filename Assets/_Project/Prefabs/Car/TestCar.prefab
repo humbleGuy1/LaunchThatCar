@@ -367,7 +367,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1154160589}
-  m_LocalRotation: {x: 0.2807144, y: 1.6335071e-15, z: -1.09119496e-16, w: 0.95979136}
+  m_LocalRotation: {x: 0.28071442, y: -0.000000028604013, z: 0.000000008365943, w: 0.95979136}
   m_LocalPosition: {x: 0, y: 21, z: -30}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1239,8 +1239,8 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.7
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Radius: 0.1
+  m_Center: {x: 0, y: -0.6, z: 0}
 --- !u!146 &346114234
 WheelCollider:
   m_ObjectHideFlags: 0
@@ -1375,8 +1375,8 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.7
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Radius: 0.1
+  m_Center: {x: 0, y: -0.6, z: 0}
 --- !u!146 &1740545
 WheelCollider:
   m_ObjectHideFlags: 0
@@ -1581,8 +1581,8 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.7
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Radius: 0.1
+  m_Center: {x: 0, y: -0.6, z: 0}
 --- !u!146 &1301895170
 WheelCollider:
   m_ObjectHideFlags: 0
@@ -1996,8 +1996,8 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.7
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Radius: 0.1
+  m_Center: {x: 0, y: -0.6, z: 0}
 --- !u!146 &672811547
 WheelCollider:
   m_ObjectHideFlags: 0

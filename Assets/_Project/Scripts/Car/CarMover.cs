@@ -57,10 +57,6 @@ namespace Runtime.BaseCar
             _rigidBody.centerOfMass = _centerOfMassPosition.GetCenterOfMassPosition(_wheels.IsGrounded);
             _rigidBody.angularDrag = _angularDragCalculator.Calculate(_rigidBody.velocity.magnitude, MaxSpeed);
 
-            if(_wheels.IsGrounded == false)
-            {
-                _rigidBody.velocity = Vector3.ClampMagnitude(_rigidBody.velocity, MaxFlySpeed);
-            }
 
             if (_playerInput.IsButtonDown)
             {
@@ -75,7 +71,7 @@ namespace Runtime.BaseCar
                 _needToMove = true;
             }
 
-            if (_playerInput.IsButtonHold)
+            if (_playerInput.IsButtonHold && _wheels.IsGrounded)
             {
                 ChargedSpeed = _converter.ConvertYDelta();
             }
@@ -117,6 +113,11 @@ namespace Runtime.BaseCar
             if (_itsMovingTime)
             {
                 _rigidBody.velocity = transform.forward * LastChargedSpeed;
+            }
+
+            if(_wheels.IsGrounded == false)
+            {
+                _rigidBody.velocity = Vector3.ClampMagnitude(_rigidBody.velocity, MaxFlySpeed);
             }
         }
 
