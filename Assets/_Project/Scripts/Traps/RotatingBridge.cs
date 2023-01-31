@@ -3,6 +3,7 @@ using DG.Tweening;
 using System.Collections.Generic;
 using System.Collections;
 
+[SelectionBase]
 public class RotatingBridge : MonoBehaviour, ILoopedTrap
 {
     [SerializeField] private float _interval;

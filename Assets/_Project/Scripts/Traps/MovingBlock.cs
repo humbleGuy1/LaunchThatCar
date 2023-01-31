@@ -1,6 +1,7 @@
 using UnityEngine;
 using DG.Tweening;
 
+[SelectionBase]
 public class MovingBlock : MonoBehaviour, ILoopedTrap
 {
     [SerializeField] private Transform _targetPoint;

@@ -28,7 +28,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3384753358215690437}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 37.357616, y: -62.28399, z: 23.022552}
+  m_LocalPosition: {x: 0, y: 0, z: 23.022552}
   m_LocalScale: {x: 15.940002, y: 1, z: 8.591167}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -115,6 +115,7 @@ MonoBehaviour:
     <MaxAngularDrag>k__BackingField: 2
     <MaxFlySpeed>k__BackingField: 0
     <MaxDrag>k__BackingField: 0
+    <MaxGrip>k__BackingField: 100
 --- !u!1 &3384753358384821390
 GameObject:
   m_ObjectHideFlags: 0
@@ -143,7 +144,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3384753358384821390}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 37.357616, y: -62.28399, z: -4.0974426}
+  m_LocalPosition: {x: 0, y: 0, z: -4.0974426}
   m_LocalScale: {x: 15.940002, y: 1, z: 8.591167}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -230,6 +231,7 @@ MonoBehaviour:
     <MaxAngularDrag>k__BackingField: 2
     <MaxFlySpeed>k__BackingField: 0
     <MaxDrag>k__BackingField: 0
+    <MaxGrip>k__BackingField: 100
 --- !u!1 &3384753358700184440
 GameObject:
   m_ObjectHideFlags: 0
@@ -258,7 +260,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3384753358700184440}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 37.330635, y: -62.28399, z: 31.918762}
+  m_LocalPosition: {x: 0, y: 0, z: 31.918762}
   m_LocalScale: {x: 15.940002, y: 1, z: 8.591167}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -345,6 +347,7 @@ MonoBehaviour:
     <MaxAngularDrag>k__BackingField: 2
     <MaxFlySpeed>k__BackingField: 0
     <MaxDrag>k__BackingField: 0
+    <MaxGrip>k__BackingField: 100
 --- !u!1 &3384753359208452552
 GameObject:
   m_ObjectHideFlags: 0
@@ -373,7 +376,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3384753359208452552}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 37.330635, y: -62.28399, z: 4.798767}
+  m_LocalPosition: {x: 0, y: 0, z: 4.798767}
   m_LocalScale: {x: 15.940002, y: 1, z: 8.591167}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -460,6 +463,7 @@ MonoBehaviour:
     <MaxAngularDrag>k__BackingField: 2
     <MaxFlySpeed>k__BackingField: 0
     <MaxDrag>k__BackingField: 0
+    <MaxGrip>k__BackingField: 100
 --- !u!1 &3384753359279347745
 GameObject:
   m_ObjectHideFlags: 0
@@ -510,10 +514,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48fba298b1686144eaa3ed319ccf0352, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _duration: 3
   _interval: 0.25
   _resetTime: 4
-  _motionCurve:
+  _platforms:
+  - {fileID: 3384753358384821389}
+  - {fileID: 3384753359208452567}
+  - {fileID: 3384753359881163952}
+  - {fileID: 3384753358215690436}
+  - {fileID: 3384753358700184391}
+  - {fileID: 3384753360061270378}
+  <Duration>k__BackingField: 3
+  <MotionCurve>k__BackingField:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
@@ -537,13 +548,6 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  _platforms:
-  - {fileID: 3384753358384821389}
-  - {fileID: 3384753359208452567}
-  - {fileID: 3384753359881163952}
-  - {fileID: 3384753358215690436}
-  - {fileID: 3384753358700184391}
-  - {fileID: 3384753360061270378}
 --- !u!1 &3384753359881163953
 GameObject:
   m_ObjectHideFlags: 0
@@ -572,7 +576,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3384753359881163953}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 37.300636, y: -62.28399, z: 13.948776}
+  m_LocalPosition: {x: 0, y: 0, z: 13.948776}
   m_LocalScale: {x: 15.940002, y: 1, z: 8.591167}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -659,6 +663,7 @@ MonoBehaviour:
     <MaxAngularDrag>k__BackingField: 2
     <MaxFlySpeed>k__BackingField: 0
     <MaxDrag>k__BackingField: 0
+    <MaxGrip>k__BackingField: 100
 --- !u!1 &3384753360061270379
 GameObject:
   m_ObjectHideFlags: 0
@@ -687,7 +692,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3384753360061270379}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 37.300636, y: -62.28399, z: 41.06877}
+  m_LocalPosition: {x: 0, y: 0, z: 41.06877}
   m_LocalScale: {x: 15.940002, y: 1, z: 8.591167}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -774,3 +779,4 @@ MonoBehaviour:
     <MaxAngularDrag>k__BackingField: 2
     <MaxFlySpeed>k__BackingField: 0
     <MaxDrag>k__BackingField: 0
+    <MaxGrip>k__BackingField: 100
