@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 935188203}
   - component: {fileID: 935188206}
   - component: {fileID: 935188205}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Platform
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -27,7 +27,7 @@ Transform:
   m_GameObject: {fileID: 935188202}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 40, y: 1, z: 30}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6006792787071012124}
@@ -128,7 +128,7 @@ GameObject:
   - component: {fileID: 6006792787071012112}
   - component: {fileID: 6006792787071012119}
   - component: {fileID: 6006792787071012125}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Joint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -144,7 +144,7 @@ Transform:
   m_GameObject: {fileID: 6006792787071012118}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 40, y: 1, z: 30}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 935188203}
@@ -162,7 +162,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
+  m_Size: {x: 40, y: 1, z: 30}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!54 &6006792787071012112
 Rigidbody:
@@ -208,7 +208,7 @@ HingeJoint:
     min: -45
     max: 45
     bounciness: 0
-    bounceMinVelocity: 200
+    bounceMinVelocity: 2000
     contactDistance: 0
   m_BreakForce: Infinity
   m_BreakTorque: Infinity
@@ -231,6 +231,6 @@ MonoBehaviour:
   <Property>k__BackingField:
     <MaxVelocity>k__BackingField: 200
     <MaxAngularDrag>k__BackingField: 2
-    <MaxFlySpeed>k__BackingField: 100
+    <MaxFlySpeed>k__BackingField: 50
     <MaxDrag>k__BackingField: 0
     <MaxGrip>k__BackingField: 100

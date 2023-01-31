@@ -6,6 +6,11 @@ public class Ground : MonoBehaviour
 {
     [field: SerializeField] public GroundProperty Property { get; private set; }
 
+    private void Awake()
+    {
+        gameObject.layer = Layers.Ground;
+    }
+
     private void OnTriggerEnter(Collider collider)
     {
         if (collider.TryGetComponent(out Wheel wheel))

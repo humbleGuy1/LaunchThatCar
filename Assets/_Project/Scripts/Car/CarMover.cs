@@ -57,7 +57,6 @@ namespace Runtime.BaseCar
             _rigidBody.centerOfMass = _centerOfMassPosition.GetCenterOfMassPosition(_wheels.IsGrounded);
             _rigidBody.angularDrag = _angularDragCalculator.Calculate(_rigidBody.velocity.magnitude, MaxSpeed);
 
-
             if (_playerInput.IsButtonDown)
             {
                 if (_positionProperty.IsOnCarcase)
