@@ -13,10 +13,12 @@ public class DropingPlatform : Interactable
 
     private bool _triggered;
     private Vector3 _startPosition;
+    private Quaternion _startRotation;
 
     private void Awake()
     {
         _startPosition = transform.position;
+        _startRotation = transform.rotation;
     }
 
     public override void OnInteract(Car car)
@@ -41,5 +43,6 @@ public class DropingPlatform : Interactable
         _rigidbody.isKinematic = true;
         _triggered = false;
         transform.position = _startPosition;
+        transform.rotation = _startRotation;
     }
 }
