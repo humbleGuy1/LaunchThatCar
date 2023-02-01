@@ -113,7 +113,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1637969001033909972, guid: 4953cae018d6beb48950fb2ee08b2422, type: 3}
       propertyPath: m_Name
-      value: TrapRotator (2)
+      value: TrapRotator (2) Variant 1
       objectReference: {fileID: 0}
     - target: {fileID: 1637969001642306558, guid: 4953cae018d6beb48950fb2ee08b2422, type: 3}
       propertyPath: m_IsActive
