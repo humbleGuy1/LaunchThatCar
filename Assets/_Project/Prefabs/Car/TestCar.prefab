@@ -457,7 +457,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _camera: {fileID: 1154160590}
-  _position: {fileID: 2700679379044221421}
+  _defaultPoint: {fileID: 2700679379044221421}
 --- !u!1 &1290980170
 GameObject:
   m_ObjectHideFlags: 0
