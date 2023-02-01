@@ -96,7 +96,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b823668f386cfae4c91cd0a96b106332, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _dropDelay: 3
+  _dropDelay: 1
   _resetTime: 2
   _view: {fileID: 8088321906117754612}
   _rigidbody: {fileID: 8088321905046093141}

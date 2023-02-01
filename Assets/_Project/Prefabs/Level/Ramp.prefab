@@ -64,7 +64,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 3336871ff00ea2f448380c2f1b63a1f0, type: 2}
+  - {fileID: 2100000, guid: 3fbf8a0aa455cd44cb0279ff4f91ed5c, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -114,6 +114,9 @@ MonoBehaviour:
   <Property>k__BackingField:
     <MaxVelocity>k__BackingField: 200
     <MaxAngularDrag>k__BackingField: 0
+    <MaxFlySpeed>k__BackingField: 50
+    <MaxDrag>k__BackingField: 0
+    <MaxGrip>k__BackingField: 100
 --- !u!114 &4663266453420062337
 MonoBehaviour:
   m_ObjectHideFlags: 0
