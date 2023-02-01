@@ -337,8 +337,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1154160589}
-  m_LocalRotation: {x: -0.28071436, y: 0.00000011920929, z: -0.0000000041909516, w: -0.95979136}
-  m_LocalPosition: {x: 0.0000056922436, y: 21, z: -30.000004}
+  m_LocalRotation: {x: 0.2807144, y: 0.00000001651454, z: -0.00000000483008, w: 0.95979136}
+  m_LocalPosition: {x: 0, y: 21, z: -30}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -812,8 +812,8 @@ Transform:
   - {fileID: 4793232530432647607}
   - {fileID: 9141299075050813301}
   - {fileID: 3790731865359846210}
-  - {fileID: 1673854718885789377}
   - {fileID: 5766895311015157584}
+  - {fileID: 1673854718885789377}
   - {fileID: 327216970}
   - {fileID: 6762875648384364532}
   - {fileID: 6762875647889493362}
@@ -836,7 +836,7 @@ Rigidbody:
   m_GameObject: {fileID: 5437348073241034574}
   serializedVersion: 2
   m_Mass: 100
-  m_Drag: 0
+  m_Drag: 0.3
   m_AngularDrag: 0.21
   m_UseGravity: 1
   m_IsKinematic: 0
@@ -955,7 +955,7 @@ MonoBehaviour:
   _tenisonForce: 10
   <MaxFlySpeed>k__BackingField: 50
   <StopSpeed>k__BackingField: 200
-  <MaxStopSpeed>k__BackingField: 100
+  <MaxStopSpeed>k__BackingField: 120
 --- !u!114 &1617136201
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1129,7 +1129,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 4df5742b4b700e043a66cfeacd649e4c, type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 4df5742b4b700e043a66cfeacd649e4c, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1223,7 +1223,7 @@ WheelCollider:
   m_Radius: 0.5
   m_SuspensionSpring:
     spring: 35000
-    damper: 1000
+    damper: 2000
     targetPosition: 0.5
   m_SuspensionDistance: 0.3
   m_ForceAppPointDistance: 0
@@ -1231,7 +1231,7 @@ WheelCollider:
   m_WheelDampingRate: 0.0001
   m_ForwardFriction:
     m_ExtremumSlip: 0.4
-    m_ExtremumValue: 1
+    m_ExtremumValue: 0.001
     m_AsymptoteSlip: 0.8
     m_AsymptoteValue: 0.5
     m_Stiffness: 1
@@ -1360,7 +1360,7 @@ WheelCollider:
   m_Radius: 0.5
   m_SuspensionSpring:
     spring: 35000
-    damper: 1000
+    damper: 2000
     targetPosition: 0.5
   m_SuspensionDistance: 0.3
   m_ForceAppPointDistance: 0
@@ -1368,7 +1368,7 @@ WheelCollider:
   m_WheelDampingRate: 0.0001
   m_ForwardFriction:
     m_ExtremumSlip: 0.4
-    m_ExtremumValue: 1
+    m_ExtremumValue: 0.001
     m_AsymptoteSlip: 0.8
     m_AsymptoteValue: 0.5
     m_Stiffness: 1
@@ -1473,7 +1473,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 4df5742b4b700e043a66cfeacd649e4c, type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 4df5742b4b700e043a66cfeacd649e4c, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1567,7 +1567,7 @@ WheelCollider:
   m_Radius: 0.5
   m_SuspensionSpring:
     spring: 35000
-    damper: 1000
+    damper: 2000
     targetPosition: 0.5
   m_SuspensionDistance: 0.3
   m_ForceAppPointDistance: 0
@@ -1575,7 +1575,7 @@ WheelCollider:
   m_WheelDampingRate: 0.0001
   m_ForwardFriction:
     m_ExtremumSlip: 0.4
-    m_ExtremumValue: 1
+    m_ExtremumValue: 0.001
     m_AsymptoteSlip: 0.8
     m_AsymptoteValue: 0.5
     m_Stiffness: 1
@@ -1983,7 +1983,7 @@ WheelCollider:
   m_Radius: 0.5
   m_SuspensionSpring:
     spring: 35000
-    damper: 1000
+    damper: 2000
     targetPosition: 0.5
   m_SuspensionDistance: 0.3
   m_ForceAppPointDistance: 0
@@ -1991,7 +1991,7 @@ WheelCollider:
   m_WheelDampingRate: 0.0001
   m_ForwardFriction:
     m_ExtremumSlip: 0.4
-    m_ExtremumValue: 1
+    m_ExtremumValue: 0.001
     m_AsymptoteSlip: 0.8
     m_AsymptoteValue: 0.5
     m_Stiffness: 1

@@ -113,7 +113,7 @@ MonoBehaviour:
   <Property>k__BackingField:
     <MaxVelocity>k__BackingField: 200
     <MaxAngularDrag>k__BackingField: 2
-    <MaxFlySpeed>k__BackingField: 0
+    <MaxFlySpeed>k__BackingField: 100
     <MaxDrag>k__BackingField: 0
     <MaxGrip>k__BackingField: 100
 --- !u!1 &3384753358384821390
@@ -229,7 +229,7 @@ MonoBehaviour:
   <Property>k__BackingField:
     <MaxVelocity>k__BackingField: 200
     <MaxAngularDrag>k__BackingField: 2
-    <MaxFlySpeed>k__BackingField: 0
+    <MaxFlySpeed>k__BackingField: 100
     <MaxDrag>k__BackingField: 0
     <MaxGrip>k__BackingField: 100
 --- !u!1 &3384753358700184440
@@ -345,7 +345,7 @@ MonoBehaviour:
   <Property>k__BackingField:
     <MaxVelocity>k__BackingField: 200
     <MaxAngularDrag>k__BackingField: 2
-    <MaxFlySpeed>k__BackingField: 0
+    <MaxFlySpeed>k__BackingField: 100
     <MaxDrag>k__BackingField: 0
     <MaxGrip>k__BackingField: 100
 --- !u!1 &3384753359208452552
@@ -461,7 +461,7 @@ MonoBehaviour:
   <Property>k__BackingField:
     <MaxVelocity>k__BackingField: 200
     <MaxAngularDrag>k__BackingField: 2
-    <MaxFlySpeed>k__BackingField: 0
+    <MaxFlySpeed>k__BackingField: 100
     <MaxDrag>k__BackingField: 0
     <MaxGrip>k__BackingField: 100
 --- !u!1 &3384753359279347745
@@ -661,7 +661,7 @@ MonoBehaviour:
   <Property>k__BackingField:
     <MaxVelocity>k__BackingField: 200
     <MaxAngularDrag>k__BackingField: 2
-    <MaxFlySpeed>k__BackingField: 0
+    <MaxFlySpeed>k__BackingField: 100
     <MaxDrag>k__BackingField: 0
     <MaxGrip>k__BackingField: 100
 --- !u!1 &3384753360061270379
@@ -777,6 +777,6 @@ MonoBehaviour:
   <Property>k__BackingField:
     <MaxVelocity>k__BackingField: 200
     <MaxAngularDrag>k__BackingField: 2
-    <MaxFlySpeed>k__BackingField: 0
+    <MaxFlySpeed>k__BackingField: 100
     <MaxDrag>k__BackingField: 0
     <MaxGrip>k__BackingField: 100

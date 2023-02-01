@@ -166,7 +166,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _rigidbody: {fileID: 1446199974019115327}
   _startMass: 25
-  _targetMass: 5000
+  _targetMass: 100
   _maxVelocity: 30
 --- !u!1 &1446199974108792237
 GameObject:
@@ -499,8 +499,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _rigidbody: {fileID: 1446199974389126532}
-  _startMass: 25
-  _targetMass: 5000
+  _startMass: 1
+  _targetMass: 1000
   _maxVelocity: 30
 --- !u!1 &1446199974563044873
 GameObject:
