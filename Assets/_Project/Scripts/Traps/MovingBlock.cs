@@ -1,10 +1,12 @@
 using UnityEngine;
 using DG.Tweening;
+using System.Collections;
 
 [SelectionBase]
 public class MovingBlock : MonoBehaviour, ILoopedTrap
 {
     [SerializeField] private Transform _targetPoint;
+    [SerializeField] private Rigidbody _rigidbody;
     [SerializeField] private float _interval;
 
     [field: SerializeField] public float Duration { get; private set; }
@@ -22,9 +24,9 @@ public class MovingBlock : MonoBehaviour, ILoopedTrap
     public void StartLoop()
     {
         Sequence sequence = DOTween.Sequence();
-        sequence.Append(transform.DOLocalMove(_targetPoint.position, Duration));
+        sequence.Append(_rigidbody.DOMove(_targetPoint.position, Duration));
         sequence.AppendInterval(_interval);
-        sequence.Append(transform.DOLocalMove(_startPosition, Duration));
+        sequence.Append(_rigidbody.DOMove(_startPosition, Duration));
         sequence.SetLoops(-1, LoopType.Restart).SetEase(MotionCurve);
     }
 }
