@@ -2,11 +2,13 @@ using Runtime.BaseCar;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Cinemachine;
 
 public class Respawner : MonoBehaviour
 {
     [SerializeField] private PlayerInput _playterInput;
-    [SerializeField] protected RespawnPoint _respawnPoint;
+    [SerializeField] private RespawnPoint _respawnPoint;
+    [SerializeField] protected CameraReset _reset;
 
     public RespawnPoint CurrentRespawnPoint { get; private set; }
 
@@ -37,5 +39,6 @@ public class Respawner : MonoBehaviour
     public void Respawn()
     {
         _respawnable.Respawn(CurrentRespawnPoint.SpawnPoint.transform);
+        _reset.ResetPosition();
     }
 }
