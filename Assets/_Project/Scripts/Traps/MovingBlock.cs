@@ -7,6 +7,7 @@ public class MovingBlock : MonoBehaviour, ILoopedTrap
 {
     [SerializeField] private Transform _targetPoint;
     [SerializeField] private Rigidbody _rigidbody;
+    [SerializeField] private float _startDelay;
     [SerializeField] private float _interval;
 
     [field: SerializeField] public float Duration { get; private set; }
@@ -23,10 +24,18 @@ public class MovingBlock : MonoBehaviour, ILoopedTrap
 
     public void StartLoop()
     {
+        StartCoroutine(SetDelay());
+    }
+
+    private IEnumerator SetDelay()
+    {
+        yield return new WaitForSeconds(_startDelay);
+
         Sequence sequence = DOTween.Sequence();
         sequence.Append(_rigidbody.DOMove(_targetPoint.position, Duration));
         sequence.AppendInterval(_interval);
         sequence.Append(_rigidbody.DOMove(_startPosition, Duration));
+        sequence.AppendInterval(_interval);
         sequence.SetLoops(-1, LoopType.Restart).SetEase(MotionCurve);
     }
 }
