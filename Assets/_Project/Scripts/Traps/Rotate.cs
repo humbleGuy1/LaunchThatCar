@@ -18,7 +18,7 @@ public class Rotate : MonoBehaviour, ILoopedTrap
 
     public void StartLoop()
     {
-        _rigidbody.DORotate(new Vector3(_x, _y, _z), Duration, RotateMode.FastBeyond360).
+        _rigidbody.DORotate(new Vector3(_x, _y, _z), Duration, RotateMode.FastBeyond360).SetRelative(true).
             SetEase(MotionCurve).SetLoops(-1, LoopType.Restart);
     }
 }
