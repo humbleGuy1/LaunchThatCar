@@ -8,8 +8,6 @@ public class CarController : MonoBehaviour
     [SerializeField, Range(0, 1f)] private float _rotationLimiter;
 
     private float _xRotation;
-    private bool _isRotationInverted;
-    private bool _isNewRotationType;
 
     public float RotationSensitivity => _rotationSensitivity;
 
@@ -28,38 +26,13 @@ public class CarController : MonoBehaviour
         _rotationSensitivity = sens;
     }
 
-    public void SetInvertion(bool toglePressed)
-    {
-        _isRotationInverted = toglePressed;
-    }
-
-    public void SetRotationType(bool toglePressed)
-    {
-        _isNewRotationType = toglePressed;
-    }
-
     public void Rotate(PlayerInput playerInput, float speed, float maxSpeed)
     {
-        float calculatedSensitivity = Mathf.Lerp(_rotationSensitivity, 0.3f, speed / maxSpeed);
+        float calculatedSensitivity = Mathf.Lerp(_rotationSensitivity, 0.5f, speed / maxSpeed);
+        _xRotation += playerInput.XRotation * calculatedSensitivity;
 
-        if (_isNewRotationType == false)
-        {
-            if (_isRotationInverted)
-                _xRotation += playerInput.XRotation * calculatedSensitivity * -1;
-            else
-                _xRotation += playerInput.XRotation * calculatedSensitivity;
-
-            Quaternion targetRotation = Quaternion.Euler(new Vector3(transform.eulerAngles.x, _xRotation, transform.eulerAngles.z));
-            transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, 10 * Time.deltaTime);
-        }
-        else
-        {
-            if (_isRotationInverted)
-                transform.Rotate((Vector3.up * playerInput.xXxRotationxXx).normalized * _rotationSensitivity * -1);
-            else
-                transform.Rotate((Vector3.up * playerInput.xXxRotationxXx).normalized * _rotationSensitivity);
-        }
-       
+        Quaternion targetRotation = Quaternion.Euler(new Vector3(transform.eulerAngles.x, _xRotation, transform.eulerAngles.z));
+        transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, 10 * Time.deltaTime);
     }
 
     private float GetAngle(float eulerAngle)

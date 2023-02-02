@@ -16,9 +16,7 @@ namespace Runtime.BaseCar
         [SerializeField] private PositionProperty _positionProperty;
         [SerializeField] private AnimationCurve _angularDragCurve;
         [SerializeField] private CarController _carController;
-        [SerializeField] private float _tenisonForce;
 
-        [field:SerializeField] public float MaxFlySpeed { get; private set; } = 50f;
         [field: SerializeField] public float StopSpeed { get; private set; } = 200f;
         [field: SerializeField] public float MaxStopSpeed { get; private set; } = 75f;
 
@@ -26,10 +24,10 @@ namespace Runtime.BaseCar
         private CarRespawn _carRespawn;
         private bool _needToMove;
         private bool _itsMovingTime;
-        private bool _isBreaking;
 
         private readonly float _relaxTime = 0.5f;
 
+        public float MaxFlySpeed { get; private set; } = 50f;
         public float ChargedSpeed { get; private set; }
         public float LastChargedSpeed { get; private set; }
         public float RBVelocity => _rigidBody.velocity.magnitude;
@@ -75,12 +73,13 @@ namespace Runtime.BaseCar
                 ChargedSpeed = _converter.ConvertYDelta();
             }
 
-            if (_playerInput.IsButtonUp)
-                _isBreaking = false;
-
-            if(_playerInput.IsButtonHold && (IsMoving || CanWRUMWRUM) && _wheels.IsGrounded)
+            if(_playerInput.IsButtonHold && _wheels.IsGrounded)
             {
-                _carController.Rotate(_playerInput, _rigidBody.velocity.magnitude, MaxSpeed);
+                if(CanWRUMWRUM)
+                    _carController.Rotate(_playerInput, ChargedSpeed, MaxSpeed);
+                else if(IsMoving)
+                    _carController.Rotate(_playerInput, _rigidBody.velocity.magnitude, MaxSpeed);
+
             }
 
             if (IsMoving)
@@ -164,7 +163,6 @@ namespace Runtime.BaseCar
 
         public void Brake(float brakeSpeed)
         {
-            _isBreaking = true;
             Vector3 targetVelocity = _rigidBody.velocity;
             targetVelocity.x = 0;
             targetVelocity.z = 0;
