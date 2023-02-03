@@ -106,7 +106,7 @@ Transform:
   m_GameObject: {fileID: 5192238090364603911}
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
   m_LocalPosition: {x: -130.3, y: -2.08, z: -5.2}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5192238090331656969}
@@ -128,6 +128,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _targetPoint: {fileID: 5192238090331656969}
   _rigidbody: {fileID: 5192238090009043041}
+  _startDelay: 0
   _interval: 0.5
   <Duration>k__BackingField: 2
   <MotionCurve>k__BackingField:
