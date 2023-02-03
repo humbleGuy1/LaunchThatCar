@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 1152207792670853644}
   - component: {fileID: 1152207792670853651}
   - component: {fileID: 1152207792670853641}
+  - component: {fileID: 4527226342533185439}
   m_Layer: 0
   m_Name: Block_Turn
   m_TagString: Untagged
@@ -1753,3 +1754,19 @@ MonoBehaviour:
     <MaxFlySpeed>k__BackingField: 100
     <MaxDrag>k__BackingField: 0
     <MaxGrip>k__BackingField: 100
+--- !u!114 &4527226342533185439
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1152207792670853650}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03c5eb4178165db4bb5c00958e426603, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _respawnPointPrefab: {fileID: 0}
+  _rampPrefab: {fileID: 0}
+  _createdRespawnPoint: {fileID: 0}
+  _createdRamp: {fileID: 0}
