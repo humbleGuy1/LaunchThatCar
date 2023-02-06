@@ -10,6 +10,7 @@ public class PositionProperty : MonoBehaviour
     [SerializeField] private Transform _bottom;
     [SerializeField] private Transform _forward;
     [SerializeField] private Transform _back;
+    [SerializeField] private Rigidbody _rb;
 
     [field: SerializeField] public GroundCheck GroundCheck { get; private set; }
 
@@ -28,10 +29,9 @@ public class PositionProperty : MonoBehaviour
 
         TiltSideAngle = GetTiltAngle(transform.eulerAngles.z);
 
-        //Debug.Log(GroundCheck.Grounded);
         IsOnCarcase = GroundCheck.Grounded && (Mathf.Abs(TiltSideAngle) > 85 || Mathf.Abs(TiltForwardAngle) > 85);
 
-        UpdateForwardAlongSuface();
+        //UpdateForwardAlongSuface();
     }
 
     private float GetTiltAngle(float eulerAngle)
@@ -46,7 +46,7 @@ public class PositionProperty : MonoBehaviour
 
     private void UpdateForwardAlongSuface()
     {
-        if(Physics.Raycast(_up.position, Vector3.down, out RaycastHit hit,2f, _layerMask))
+        if(Physics.Raycast(_up.position, Vector3.down, out RaycastHit hit,4f, _layerMask))
         {
             Vector3 forward = transform.forward;
             forward.y = 0;

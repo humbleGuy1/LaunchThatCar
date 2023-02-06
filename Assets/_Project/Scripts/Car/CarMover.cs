@@ -20,16 +20,18 @@ namespace Runtime.BaseCar
         [field: SerializeField] public float StopSpeed { get; private set; } = 200f;
         [field: SerializeField] public float MaxStopSpeed { get; private set; } = 75f;
 
+        public bool IsControlDisabed;
+
         private AngularVelocityCalculator _angularDragCalculator;
         private CarRespawn _carRespawn;
-        private bool _needToMove;
-        private bool _itsMovingTime;
 
         private readonly float _relaxTime = 0.5f;
 
         public float MaxFlySpeed { get; private set; } = 50f;
         public float ChargedSpeed { get; private set; }
         public float LastChargedSpeed { get; private set; }
+        public bool IsGrounded => _wheels.IsGrounded;
+        public CarController Controller => _carController;
         public float RBVelocity => _rigidBody.velocity.magnitude;
         public float MaxSpeed => _converter.MaxForce;
         public bool IsMoving => _rigidBody.velocity.magnitude > 0.01f;
@@ -39,33 +41,35 @@ namespace Runtime.BaseCar
 
         private void Awake()
         {
-            _carRespawn = new CarRespawn(_rigidBody, transform, _wheels);
+            _carRespawn = new CarRespawn(_rigidBody,transform, _wheels);
             _angularDragCalculator = new AngularVelocityCalculator(0, 3,_rigidBody, _angularDragCurve, _wheels);
             _centerOfMassPosition.Init(_positionProperty);
+            _carController.Init(_rigidBody);
+            _converter.Init(_playerInput);
         }
 
-        private void Update()
+        private void LateUpdate()
         {
             if (_carRespawn.IsRespawning)
                 return;
 
             MaxFlySpeed = _wheels.MaxFlySpeed;
-            _angularDragCalculator.Update(_wheels.MaxAngularDrag);
             _wheels.Update();
-            _rigidBody.centerOfMass = _centerOfMassPosition.GetCenterOfMassPosition(_wheels.IsGrounded);
-            _rigidBody.angularDrag = _angularDragCalculator.Calculate(_rigidBody.velocity.magnitude, MaxSpeed);
+
+            if (IsControlDisabed)
+                return;
 
             if (_playerInput.IsButtonDown)
             {
                 if (_positionProperty.IsOnCarcase)
-                    Respawn(transform.position + Vector3.up * 2, Quaternion.Euler(0, transform.eulerAngles.y, 0));
+                    Respawn(transform.position + Vector3.up * 2, Quaternion.Euler(0, transform.rotation.eulerAngles.y, 0));
 
                 _carController.SetStartRotation();
             }
 
             if (_playerInput.IsButtonUp && CanWRUMWRUM)
             {
-                _needToMove = true;
+                StartCoroutine(MovingForward(ChargedSpeed));
             }
 
             if (_playerInput.IsButtonHold && _wheels.IsGrounded)
@@ -92,30 +96,27 @@ namespace Runtime.BaseCar
 
         private void FixedUpdate()
         {
+            _angularDragCalculator.Update(_wheels.MaxAngularDrag);
+            _rigidBody.centerOfMass = _centerOfMassPosition.GetCenterOfMassPosition(_wheels.IsGrounded);
+            _rigidBody.angularDrag = _angularDragCalculator.Calculate(_rigidBody.velocity.magnitude, MaxSpeed);
+
+            if (_wheels.IsGrounded == false)
+            {
+                _rigidBody.velocity = Vector3.ClampMagnitude(_rigidBody.velocity, MaxFlySpeed);
+            }
+
             if (_wheels.IsGrounded)
             {
                 float gripForce = Mathf.Lerp(0, _wheels.MaxGrip, RBVelocity / MaxSpeed);
                 _rigidBody.AddForce(-transform.up * gripForce, ForceMode.Acceleration);
             }
 
-            if (_playerInput.IsButtonHold && _wheels.IsGrounded && _rigidBody.velocity.magnitude < MaxStopSpeed && _needToMove == false)
+            if (IsControlDisabed)
+                return;
+
+            if (_playerInput.IsButtonHold && _wheels.IsGrounded && _rigidBody.velocity.magnitude < MaxStopSpeed)
             {
                 Brake(StopSpeed);
-            }
-
-            if (_needToMove)
-            {
-                StartCoroutine(MovingForward(ChargedSpeed));
-            }
-
-            if (_itsMovingTime)
-            {
-                _rigidBody.velocity = transform.forward * LastChargedSpeed;
-            }
-
-            if(_wheels.IsGrounded == false)
-            {
-                _rigidBody.velocity = Vector3.ClampMagnitude(_rigidBody.velocity, MaxFlySpeed);
             }
         }
 
@@ -145,20 +146,15 @@ namespace Runtime.BaseCar
 
         public IEnumerator MovingForward(float force)
         {
-            LastChargedSpeed = force;
-            _needToMove = false;
             float elapsedTime = 0;
             float acceleratingTime = 0.1f;
-            _itsMovingTime = true;
 
             while(_wheels.IsGrounded && elapsedTime < acceleratingTime)
             {
                 elapsedTime += Time.deltaTime;
-
+                _rigidBody.velocity = transform.forward * force;
                 yield return null;
             }
-
-            _itsMovingTime = false;
         }
 
         public void Brake(float brakeSpeed)

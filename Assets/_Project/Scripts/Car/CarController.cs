@@ -8,17 +8,23 @@ public class CarController : MonoBehaviour
     [SerializeField, Range(0, 1f)] private float _rotationLimiter;
 
     private float _xRotation;
+    private Rigidbody _rigidbody;
 
     public float RotationSensitivity => _rotationSensitivity;
 
-    private void Awake()
+    private void Start()
     {
         SetStartRotation();
     }
 
+    public void Init(Rigidbody rigidbody)
+    {
+        _rigidbody = rigidbody;
+    }
+
     public void SetStartRotation()
     {
-        _xRotation = GetAngle(transform.eulerAngles.y);
+        _xRotation = GetAngle(transform.rotation.eulerAngles.y);
     }
 
     public void SetSensititvity(float sens)
@@ -26,13 +32,18 @@ public class CarController : MonoBehaviour
         _rotationSensitivity = sens;
     }
 
-    public void Rotate(PlayerInput playerInput, float speed, float maxSpeed)
+    public void Rotate(IInput input, float speed, float maxSpeed)
     {
         float calculatedSensitivity = Mathf.Lerp(_rotationSensitivity, 0.5f, speed / maxSpeed);
-        _xRotation += playerInput.XRotation * calculatedSensitivity;
+        _xRotation += input.XRotation * calculatedSensitivity;
 
-        Quaternion targetRotation = Quaternion.Euler(new Vector3(transform.eulerAngles.x, _xRotation, transform.eulerAngles.z));
-        transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, 10 * Time.deltaTime);
+        Quaternion targetRotation = Quaternion.Euler(new Vector3(transform.rotation.eulerAngles.x, _xRotation, transform.rotation.eulerAngles.z));
+        Rotate(targetRotation, 10f * Time.fixedDeltaTime);
+    }
+
+    public void Rotate(Quaternion targetRotation, float lerp)
+    {
+        transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, lerp );
     }
 
     private float GetAngle(float eulerAngle)

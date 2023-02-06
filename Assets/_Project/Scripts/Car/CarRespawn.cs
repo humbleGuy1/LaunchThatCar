@@ -6,14 +6,14 @@ public class CarRespawn
     public bool IsRespawning { get; private set; }
 
     private Rigidbody _rigidBody;
+    private WheelsHandler _wheels;
     private Transform _transform;
-    private WheelsHandler _wheelStatus;
 
-    public CarRespawn(Rigidbody rigidBody, Transform transform, WheelsHandler wheelStatus)
+    public CarRespawn(Rigidbody rigidBody, Transform transform,  WheelsHandler _wheelsHandler)
     {
-        _rigidBody = rigidBody;
         _transform = transform;
-        _wheelStatus = wheelStatus;
+        _rigidBody = rigidBody;
+        _wheels = _wheelsHandler;
     }
 
     public IEnumerator Respawn(Transform point)
@@ -27,11 +27,11 @@ public class CarRespawn
         _transform.position = position;
         _transform.rotation = rotation;
         _rigidBody.isKinematic = true;
-        _wheelStatus.Stop();
+        _wheels.Stop();
         yield return null;
         _rigidBody.isKinematic = false;
         yield return new WaitForSeconds(0.4f);
-        _wheelStatus.Resume();
+        _wheels.Resume();
         IsRespawning = false;
     }
 }

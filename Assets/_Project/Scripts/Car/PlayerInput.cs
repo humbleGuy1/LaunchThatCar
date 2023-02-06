@@ -3,7 +3,7 @@ using UnityEngine.EventSystems;
 
 namespace Runtime.BaseCar
 {
-    public class PlayerInput : MonoBehaviour
+    public class PlayerInput : MonoBehaviour, IInput
     {
         public Vector3 StartPosition { get; private set; }
         public Vector3 EndPosition { get; private set; }
@@ -15,7 +15,6 @@ namespace Runtime.BaseCar
         public bool SpacePressed {get; private set;}
         public bool IsButtonHold {get; private set;}
         public float XRotation { get; private set; }
-        public float xXxRotationxXx { get; private set; }
 
         private void Update()
         {
@@ -35,13 +34,11 @@ namespace Runtime.BaseCar
             if (IsButtonUp)
             {
                 XRotation = 0;
-                xXxRotationxXx = 0;
             }
 
             if (IsButtonHold)
             {
                 XRotation = Input.GetAxis(MouseX);
-                xXxRotationxXx += Input.GetAxis(MouseX);
                 EndPosition = Input.mousePosition;
             } 
         }

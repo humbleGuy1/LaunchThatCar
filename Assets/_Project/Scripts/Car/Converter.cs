@@ -8,14 +8,18 @@ namespace Runtime.BaseCar
     {
         [field:SerializeField] public float MaxForce { get; private set; }
 
-        [SerializeField] private PlayerInput _playerInput;
         [SerializeField] private float _maxYDelta;
 
         private float _deltaY;
+        private IInput _input;
 
         private readonly float _minForce;
         private readonly float _minYDelta;
 
+        public void Init(IInput playerInput)
+        {
+            _input = playerInput;
+        }
 
         public void SetMaxForce(float value)
         {
@@ -24,9 +28,16 @@ namespace Runtime.BaseCar
 
         public float ConvertYDelta()
         {
-            _deltaY = _playerInput.StartPosition.y - _playerInput.EndPosition.y;
-            _deltaY = Mathf.Clamp(_deltaY, _minYDelta, _maxYDelta);
-            float force = Mathf.Lerp(_minForce, MaxForce, _deltaY/_maxYDelta);
+            _deltaY = _input.StartPosition.y - _input.EndPosition.y;
+
+            return ConvertYDelta(_deltaY);
+        }
+
+        public float ConvertYDelta(float delta)
+        {
+            delta = Mathf.Clamp(delta, _minYDelta, _maxYDelta);
+            float force = Mathf.Lerp(_minForce, MaxForce, delta / _maxYDelta);
+
             return force;
         }
     }

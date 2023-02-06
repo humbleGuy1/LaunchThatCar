@@ -6,6 +6,6 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/_Project/Scenes/TestLevelAllTraps.unity
-    guid: 9e01cf53084b57c499116bd949fbba81
+    path: Assets/_Project/Scenes/BlockLevel.unity
+    guid: 1603c274534d31f45beda443510b5864
   m_configObjects: {}
