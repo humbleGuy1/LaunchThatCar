@@ -969,6 +969,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _rotationSensitivity: 1
   _rotationLimiter: 0.5
+  _splineProjector: {fileID: 1617136202}
+  _maxDegreesDelta: 180
 --- !u!114 &2106729077
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1001,7 +1003,6 @@ MonoBehaviour:
   _forward: {fileID: 1026747105}
   _back: {fileID: 388259681}
   _rb: {fileID: 6163127464218700423}
-  _splineProjector: {fileID: 1617136202}
   <GroundCheck>k__BackingField: {fileID: 1946171601172345951}
 --- !u!114 &1617136197
 MonoBehaviour:

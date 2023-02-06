@@ -1,6 +1,4 @@
-using Dreamteck;
 using Dreamteck.Splines;
-using Runtime.BaseCar;
 using UnityEngine;
 
 public class CarController : MonoBehaviour
@@ -11,8 +9,7 @@ public class CarController : MonoBehaviour
     [SerializeField] private SplineProjector _splineProjector;
     [SerializeField] private float _maxDegreesDelta;
 
-    private float _xRotation;
-    private Rigidbody _rigidbody;
+    private float _xRotation;   
 
     public float RotationSensitivity => _rotationSensitivity;
 
@@ -25,12 +22,6 @@ public class CarController : MonoBehaviour
         if (_splineProjector.spline != null)
             transform.rotation = Quaternion.RotateTowards(transform.rotation,
                 _splineProjector.result.rotation, _maxDegreesDelta * Time.deltaTime);
-        //transform.rotation = Quaternion.LookRotation(_splineProjector.result.forward, transform.up);
-    }
-
-    public void Init(Rigidbody rigidbody)
-    {
-        _rigidbody = rigidbody;
     }
 
     public void SetStartRotation()

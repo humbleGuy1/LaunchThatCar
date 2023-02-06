@@ -1,46 +1,43 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-namespace Runtime.BaseCar
+public class PlayerInput : MonoBehaviour, IInput
 {
-    public class PlayerInput : MonoBehaviour, IInput
+    public Vector3 StartPosition { get; private set; }
+    public Vector3 EndPosition { get; private set; }
+
+    private const string MouseX = "Mouse X";
+
+    public bool IsButtonUp { get; private set; }
+    public bool IsButtonDown { get; private set; }
+    public bool SpacePressed { get; private set; }
+    public bool IsButtonHold { get; private set; }
+    public float XRotation { get; private set; }
+
+    private void Update()
     {
-        public Vector3 StartPosition { get; private set; }
-        public Vector3 EndPosition { get; private set; }
+        if (EventSystem.current.IsPointerOverGameObject())
+            return;
 
-        private const string MouseX = "Mouse X";
+        IsButtonUp = Input.GetMouseButtonUp(0);
+        IsButtonDown = Input.GetMouseButtonDown(0);
+        SpacePressed = Input.GetKeyDown(KeyCode.Space);
+        IsButtonHold = Input.GetMouseButton(0);
 
-        public bool IsButtonUp { get; private set;}
-        public bool IsButtonDown {get; private set;}
-        public bool SpacePressed {get; private set;}
-        public bool IsButtonHold {get; private set;}
-        public float XRotation { get; private set; }
-
-        private void Update()
+        if (IsButtonDown)
         {
-            if (EventSystem.current.IsPointerOverGameObject())
-                return;
+            StartPosition = Input.mousePosition;
+        }
 
-            IsButtonUp = Input.GetMouseButtonUp(0);
-            IsButtonDown = Input.GetMouseButtonDown(0);
-            SpacePressed = Input.GetKeyDown(KeyCode.Space);
-            IsButtonHold = Input.GetMouseButton(0);
+        if (IsButtonUp)
+        {
+            XRotation = 0;
+        }
 
-            if (IsButtonDown)
-            {
-                StartPosition = Input.mousePosition;
-            }
-
-            if (IsButtonUp)
-            {
-                XRotation = 0;
-            }
-
-            if (IsButtonHold)
-            {
-                XRotation = Input.GetAxis(MouseX);
-                EndPosition = Input.mousePosition;
-            } 
+        if (IsButtonHold)
+        {
+            XRotation = Input.GetAxis(MouseX);
+            EndPosition = Input.mousePosition;
         }
     }
 }

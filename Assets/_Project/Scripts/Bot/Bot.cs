@@ -1,7 +1,4 @@
-﻿using Runtime.BaseCar;
-using System;
-using System.Collections;
-using System.Threading;
+﻿using System.Collections;
 using UnityEngine;
 
 namespace Bots
