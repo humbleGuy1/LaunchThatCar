@@ -10,8 +10,8 @@ public class SplineSetter : Interactable
     public override void OnInteract(Car car)
     {
         if(_attach)
-            car.PositionProperty.SetSplineToFollow(_spine);
+            car.CarMover.Controller.SetSplineToFollow(_spine);
         else
-            car.PositionProperty.ResetSpline();
+            car.CarMover.Controller.ResetSpline();
     }
 }

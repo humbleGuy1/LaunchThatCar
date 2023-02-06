@@ -9,9 +9,7 @@ public class PositionProperty : MonoBehaviour
     [SerializeField] private Transform _forward;
     [SerializeField] private Transform _back;
     [SerializeField] private Rigidbody _rb;
-    [Header("Spline")]
-    [SerializeField] private SplineProjector _splineProjector;
-    [SerializeField] private float _maxDegreesDelta;
+    
 
     [field: SerializeField] public GroundCheck GroundCheck { get; private set; }
 
@@ -31,21 +29,6 @@ public class PositionProperty : MonoBehaviour
         TiltSideAngle = GetTiltAngle(transform.eulerAngles.z);
 
         IsOnCarcase = GroundCheck.Grounded && (Mathf.Abs(TiltSideAngle) > 85 || Mathf.Abs(TiltForwardAngle) > 85);
-
-        if (_splineProjector.spline != null)
-            transform.rotation = Quaternion.RotateTowards(transform.rotation, 
-                _splineProjector.result.rotation, _maxDegreesDelta * Time.deltaTime);
-            //transform.rotation = Quaternion.LookRotation(_splineProjector.result.forward, transform.up);
-    }
-
-    public void SetSplineToFollow(SplineComputer spline)
-    {
-        _splineProjector.spline = spline;
-    }
-
-    public void ResetSpline()
-    {
-        _splineProjector.spline = null;
     }
 
     private float GetTiltAngle(float eulerAngle)
