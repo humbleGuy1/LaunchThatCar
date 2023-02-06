@@ -1,5 +1,7 @@
 using Dreamteck;
+using Dreamteck.Splines;
 using System.Collections;
+using System.Collections.Generic;
 using System.Linq;
 using System.Timers;
 using UnityEngine;
@@ -47,7 +49,7 @@ namespace Runtime.BaseCar
             _carController.Init(_rigidBody);
             _converter.Init(_playerInput);
         }
-
+         
         private void LateUpdate()
         {
             if (_carRespawn.IsRespawning)
@@ -91,6 +93,9 @@ namespace Runtime.BaseCar
                 float speed = MaxSpeed / _relaxTime;
                 ChargedSpeed = Mathf.MoveTowards(ChargedSpeed, 0, speed * Time.deltaTime);
             }
+
+            //if(CheckPointReached)
+            //    transform.rotation = Quaternion.LookRotation(_projector.result.forward, transform.up);
 
         }
 
