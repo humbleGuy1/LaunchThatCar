@@ -7,6 +7,8 @@ public class Wheel : MonoBehaviour
     [SerializeField] private WheelCollider _wheelCollider;
     [SerializeField] private GameObject _wheelView;
 
+    public bool DisableWheelColliderControll;
+
     public float MaxVelocity { get; private set; }
     public float MaxAngularDrag { get; private set; }
     public float MaxFlySpeed { get; private set; }
@@ -17,6 +19,9 @@ public class Wheel : MonoBehaviour
 
     private void Update()
     {
+        if (DisableWheelColliderControll)
+            return;
+
         _wheelCollider.GetWorldPose(out Vector3 pos, out Quaternion qat);
         _wheelView.transform.rotation = qat;
         _wheelView.transform.position = pos;

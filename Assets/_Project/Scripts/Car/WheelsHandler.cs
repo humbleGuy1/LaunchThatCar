@@ -48,6 +48,14 @@ public class WheelsHandler
         }
     }
 
+    public void DisableWheelColiderControll(bool disable)
+    {
+        foreach (var wheel in _wheels)
+        {
+            wheel.DisableWheelColliderControll = disable;
+        }
+    }
+
     private float GetAverageGrip()
     {
         float value = 0;

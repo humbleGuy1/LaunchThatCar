@@ -19,6 +19,7 @@ namespace Runtime.BaseCar
         [SerializeField] private AnimationCurve _angularDragCurve;
         [SerializeField] private CarController _carController;
         [SerializeField] private AnimationCurve _acceleratingCurve;
+        [SerializeField] private CarAnimator _carAnimator;
 
         [field: SerializeField] public float StopSpeed { get; private set; } = 200f;
         [field: SerializeField] public float MaxStopSpeed { get; private set; } = 75f;
@@ -39,6 +40,7 @@ namespace Runtime.BaseCar
         public CarController Controller => _carController;
         public float RBVelocity => _rigidBody.velocity.magnitude;
         public float MaxSpeed => _converter.MaxForce;
+        public float ChargedPercent => ChargedSpeed / MaxSpeed;
         public bool IsMoving => _rigidBody.velocity.magnitude > 0.01f;
         public bool CanWRUMWRUM => _rigidBody.velocity.magnitude < 10f && _wheels.IsGrounded;
 
@@ -59,9 +61,11 @@ namespace Runtime.BaseCar
 
             MaxFlySpeed = _wheels.MaxFlySpeed;
             _wheels.Update();
+            _wheels.DisableWheelColiderControll(false);
 
             if (IsControlDisabed)
                 return;
+
 
             if (_playerInput.IsButtonDown)
             {
@@ -72,7 +76,10 @@ namespace Runtime.BaseCar
             }
 
             if (_playerInput.IsButtonUp)
+            {
                 IsBraking = false;
+                _carAnimator.ReleaseWiggling();
+            }
 
             if (_playerInput.IsButtonUp && CanWRUMWRUM)
             {
@@ -83,6 +90,8 @@ namespace Runtime.BaseCar
             if (_playerInput.IsButtonHold && _wheels.IsGrounded)
             {
                 ChargedSpeed = _converter.ConvertYDelta();
+                _carAnimator.AnimateWiggling(ChargedPercent);
+                _wheels.DisableWheelColiderControll(true);
             }
 
             if(_playerInput.IsButtonHold && _wheels.IsGrounded)
