@@ -1,4 +1,3 @@
-using Dreamteck.Splines;
 using UnityEngine;
 
 namespace Runtime.BaseCar
@@ -7,8 +6,10 @@ namespace Runtime.BaseCar
     public class Car : MonoBehaviour
     {
         [SerializeField] private CarMover _carMover;
+        [SerializeField] private PositionProperty _positionProperty;
 
         public CarMover CarMover => _carMover;
+        public PositionProperty PositionProperty => _positionProperty;
 
         public void AttachToPlatform(AttachableObject platform)
         {

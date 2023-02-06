@@ -1001,6 +1001,7 @@ MonoBehaviour:
   _forward: {fileID: 1026747105}
   _back: {fileID: 388259681}
   _rb: {fileID: 6163127464218700423}
+  _splineProjector: {fileID: 1617136202}
   <GroundCheck>k__BackingField: {fileID: 1946171601172345951}
 --- !u!114 &1617136197
 MonoBehaviour:

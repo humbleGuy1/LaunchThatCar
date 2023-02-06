@@ -1,16 +1,12 @@
 using Runtime.BaseCar;
 using UnityEngine;
 
-public class SpeedBust : MonoBehaviour
+public class SpeedBust : Interactable
 {
     [SerializeField] private float _speed = 200;
 
-    private void OnTriggerEnter(Collider other)
+    public override void OnInteract(Car car)
     {
-        if (other.TryGetComponent(out Car car))
-        {
-            car.CarMover.MoveForward(_speed);
-            //car.CarMover.CheckPointReached = true;
-        }
+        car.CarMover.MoveForward(_speed);
     }
 }
