@@ -1,4 +1,5 @@
 using UnityEngine;
+using Runtime.BaseCar;
 
 [SelectionBase]
 public class Car : MonoBehaviour
@@ -17,5 +18,6 @@ public class Car : MonoBehaviour
         transform.SetParent(null);
     }
 }
+
 
 

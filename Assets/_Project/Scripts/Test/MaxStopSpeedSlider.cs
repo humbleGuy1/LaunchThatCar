@@ -1,3 +1,4 @@
+using Runtime.BaseCar;
 using UnityEngine;
 
 public class MaxStopSpeedSlider : MonoBehaviour

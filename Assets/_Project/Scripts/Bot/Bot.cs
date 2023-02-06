@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using UnityEngine;
+using Runtime.BaseCar;
 
 namespace Bots
 {

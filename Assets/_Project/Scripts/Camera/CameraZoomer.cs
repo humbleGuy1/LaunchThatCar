@@ -1,6 +1,7 @@
 using UnityEngine;
 using Cinemachine;
 using System.Collections;
+using Runtime.BaseCar;
 
 public class CameraZoomer : MonoBehaviour
 {
