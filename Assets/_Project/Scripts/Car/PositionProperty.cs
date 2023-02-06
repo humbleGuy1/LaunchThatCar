@@ -33,7 +33,8 @@ public class PositionProperty : MonoBehaviour
         IsOnCarcase = GroundCheck.Grounded && (Mathf.Abs(TiltSideAngle) > 85 || Mathf.Abs(TiltForwardAngle) > 85);
 
         if (_splineProjector.spline != null)
-            transform.rotation = Quaternion.RotateTowards(transform.rotation, _splineProjector.result.rotation, _maxDegreesDelta * Time.deltaTime);
+            transform.rotation = Quaternion.RotateTowards(transform.rotation, 
+                _splineProjector.result.rotation, _maxDegreesDelta * Time.deltaTime);
             //transform.rotation = Quaternion.LookRotation(_splineProjector.result.forward, transform.up);
     }
 
