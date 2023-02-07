@@ -2,8 +2,8 @@
     "name": "Dreamteck.Splines.Editor",
     "references": [
         "Dreamteck.Splines",
-        "Dreamteck.Utilities",
-        "Dreamteck.Utilities.Editor"
+        "Dreamteck.Utilities.Editor",
+        "Dreamteck.Utilities"
     ],
     "optionalUnityReferences": [],
     "includePlatforms": [
