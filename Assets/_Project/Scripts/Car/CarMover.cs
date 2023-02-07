@@ -53,7 +53,7 @@ namespace Runtime.BaseCar
             _centerOfMassPosition.Init(_positionProperty);
             _converter.Init(_playerInput);
         }
-         
+
         private void LateUpdate()
         {
             if (_carRespawn.IsRespawning)
@@ -162,6 +162,11 @@ namespace Runtime.BaseCar
                 _rigidBody.velocity = transform.forward* force;
 
             }
+        }
+
+        public void ResetSpeed()
+        {
+            _rigidBody.velocity = Vector3.zero;
         }
 
         public IEnumerator MovingForward(float force)

@@ -8,6 +8,7 @@ public class SpeedBust : Interactable
 
     public override void OnInteract(Car car)
     {
+        car.CarMover.ResetSpeed();
         StartCoroutine(Moving(car));
     }
 
