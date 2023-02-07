@@ -27,7 +27,7 @@ public class Wheel : MonoBehaviour
         _wheelView.transform.position = pos;
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerStay(Collider other)
     {
         if (other.TryGetComponent(out Ground ground))
             IsGrounded = true;

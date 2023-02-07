@@ -1055,7 +1055,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86e7a48e8fe1a6e42b07426fdc7709e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _rotationSensitivity: 1
+  _rotationSensitivity: 2
   _rotationLimiter: 0.5
   _splineProjector: {fileID: 1617136202}
   _maxDegreesDelta: 180
@@ -1117,7 +1117,7 @@ CapsuleCollider:
   m_Material: {fileID: 13400000, guid: 697c5725e4bd26546b104c5f255adb5c, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.8
+  m_Radius: 1.1
   m_Height: 5
   m_Direction: 2
   m_Center: {x: 0, y: 1.7, z: 0}
@@ -4210,7 +4210,7 @@ MonoBehaviour:
   _targetObject: {fileID: 0}
   _offset: {x: 0, y: 0}
   _rotationOffset: {x: 0, y: 0, z: 0}
-  lastPosition: {x: -14.49, y: -4.7, z: 527.9}
+  lastPosition: {x: 0, y: 0, z: 0}
 --- !u!1 &6101615987275872020
 GameObject:
   m_ObjectHideFlags: 0

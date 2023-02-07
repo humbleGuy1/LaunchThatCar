@@ -36,7 +36,7 @@ public class CarController : MonoBehaviour
 
     public void Rotate(IInput input, float speed, float maxSpeed)
     {
-        float calculatedSensitivity = Mathf.Lerp(_rotationSensitivity, 0.5f, speed / maxSpeed);
+        float calculatedSensitivity = Mathf.Lerp(_rotationSensitivity, 1f, speed / maxSpeed);
         _xRotation += input.XRotation * calculatedSensitivity;
 
         Quaternion targetRotation = Quaternion.Euler(new Vector3(transform.rotation.eulerAngles.x, _xRotation, transform.rotation.eulerAngles.z));
