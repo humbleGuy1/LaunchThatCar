@@ -19,9 +19,9 @@ public class CarController : MonoBehaviour
     }
     private void Update()
     {
-        if (_splineProjector.spline != null)
-            transform.rotation = Quaternion.RotateTowards(transform.rotation,
-                _splineProjector.result.rotation, _maxDegreesDelta * Time.deltaTime);
+        //if (_splineProjector.spline != null)
+        //    transform.rotation = Quaternion.RotateTowards(transform.rotation,
+        //        _splineProjector.result.rotation, _maxDegreesDelta * Time.deltaTime);
     }
 
     public void SetStartRotation()

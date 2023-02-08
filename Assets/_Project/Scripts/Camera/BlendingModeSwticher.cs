@@ -16,7 +16,7 @@ public class BlendingModeSwticher : MonoBehaviour
 
     private void Update()
     {
-        if (_car.CarMover.Wheels.IsGrounded)
+        if (_car.CarMover.Wheels.IsGearWheelGrounded)
         {
             _transposer.m_BindingMode = CinemachineTransposer.BindingMode.LockToTargetWithWorldUp;
         }

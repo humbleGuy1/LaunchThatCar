@@ -27,11 +27,11 @@ public class CarRespawn
         _transform.position = position;
         _transform.rotation = rotation;
         _rigidBody.isKinematic = true;
-        _wheels.Stop();
+        //_wheels.Stop();
         yield return null;
         _rigidBody.isKinematic = false;
         yield return new WaitForSeconds(0.4f);
-        _wheels.Resume();
+        //_wheels.Resume();
         IsRespawning = false;
     }
 }

@@ -6,6 +6,7 @@ using UnityEngine;
 public class WheelsHandler
 {
     [SerializeField] private Wheel[] _wheels;
+    [SerializeField] private Wheel[] _steeringWheel;
 
     public float MaxGrip { get; private set; }
     public float MaxFlySpeed { get; private set; }
@@ -13,7 +14,8 @@ public class WheelsHandler
     public float MaxAngularDrag { get; private set; }
     public int GroundedWheelCount { get; private set; }
     public int MaxWheelCount => _wheels.Length;
-    public bool IsGrounded => _wheels.Any(wheel => wheel.IsGrounded);
+    public bool IsGearWheelGrounded => _wheels.Any(wheel => wheel.IsGrounded);
+    public bool IsSteerWheelGrounded => _steeringWheel.Any(wheel => wheel.IsGrounded);
     public bool BecomeGrounded { get; private set; }
 
     public void Update()
@@ -32,6 +34,14 @@ public class WheelsHandler
         MaxGrip = GetAverageGrip();
     }
 
+    public void Steer(float angle)
+    {
+        foreach (var steerWheel in _steeringWheel)
+        {
+            steerWheel.Steer(angle);
+        }
+    }
+
     public void Stop()
     {
         foreach (var wheel in _wheels)
@@ -40,11 +50,11 @@ public class WheelsHandler
         }
     }
 
-    public void Resume()
+    public void Resume(float torque)
     {
         foreach (var wheel in _wheels)
         {
-            wheel.Resume();
+            wheel.Resume(torque);
         }
     }
 

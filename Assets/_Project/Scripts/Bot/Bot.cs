@@ -60,7 +60,7 @@ namespace Bots
 
         private IEnumerator Launch(PathPoint pathPoint)
         {
-            _carMover.Wheels.Resume();
+            //_carMover.Wheels.Resume();
             yield return new WaitForSeconds(_speedGainTime);
 
             float distance = Vector3.Distance(transform.position, pathPoint.transform.position);

@@ -39,6 +39,11 @@ public class Wheel : MonoBehaviour
             IsGrounded = false;
     }
 
+    public void Steer(float steerAngle)
+    {
+        _wheelCollider.steerAngle = steerAngle;
+    }
+
     public void SetMaxVelocity(GroundProperty groundProperty)
     {
         MaxVelocity = groundProperty.MaxVelocity;
@@ -50,7 +55,6 @@ public class Wheel : MonoBehaviour
 
     public void StartMotor()
     {
-        _wheelCollider.motorTorque = 1;
     }
 
     public void Stop()
@@ -58,8 +62,9 @@ public class Wheel : MonoBehaviour
         _wheelCollider.brakeTorque = 1000f;
     }
 
-    public void Resume()
+    public void Resume(float torque)
     {
         _wheelCollider.brakeTorque = 0;
+        _wheelCollider.motorTorque = torque;
     }
 }
