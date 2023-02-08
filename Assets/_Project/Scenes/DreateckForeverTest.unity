@@ -201,7 +201,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 37285245}
-  m_LocalRotation: {x: 0.21911532, y: 5.1291237e-15, z: -1.065497e-15, w: 0.975699}
+  m_LocalRotation: {x: 0.2191153, y: -0.000000032510297, z: 0.0000000073009225, w: 0.975699}
   m_LocalPosition: {x: 0, y: 26, z: -30}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -2874,7 +2874,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _sensitivity: 0.05
-  _moveWidth: 50
+  _moveWidth: 30
 --- !u!1001 &1920230948
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2884,11 +2884,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 8487069585241624005, guid: d45518e06ab83fb428efd1dbac55f201, type: 3}
       propertyPath: m_Name
-      value: SpeedSlider
-      objectReference: {fileID: 0}
-    - target: {fileID: 8487069585241624005, guid: d45518e06ab83fb428efd1dbac55f201, type: 3}
-      propertyPath: m_IsActive
-      value: 1
+      value: FuelSlider
       objectReference: {fileID: 0}
     - target: {fileID: 8487069585241624057, guid: d45518e06ab83fb428efd1dbac55f201, type: 3}
       propertyPath: m_Pivot.x
@@ -2978,13 +2974,17 @@ PrefabInstance:
       propertyPath: _carEngine
       value: 
       objectReference: {fileID: 1617136182}
-    - target: {fileID: 8487069585303491354, guid: d45518e06ab83fb428efd1dbac55f201, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -30.852661
-      objectReference: {fileID: 0}
     - target: {fileID: 8487069585598736041, guid: d45518e06ab83fb428efd1dbac55f201, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8787948571741892618, guid: d45518e06ab83fb428efd1dbac55f201, type: 3}
+      propertyPath: m_LocalScale.x
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8787948571741892618, guid: d45518e06ab83fb428efd1dbac55f201, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -426
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d45518e06ab83fb428efd1dbac55f201, type: 3}
@@ -3334,15 +3334,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1154160591, guid: 324d1b16bc1764c4082b4dc455ed7e5b, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.21911532
+      value: 0.2191153
       objectReference: {fileID: 0}
     - target: {fileID: 1154160591, guid: 324d1b16bc1764c4082b4dc455ed7e5b, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 5.1291237e-15
+      value: -0.000000032510297
       objectReference: {fileID: 0}
     - target: {fileID: 1154160591, guid: 324d1b16bc1764c4082b4dc455ed7e5b, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -1.065497e-15
+      value: 0.0000000073009225
       objectReference: {fileID: 0}
     - target: {fileID: 1617136192, guid: 324d1b16bc1764c4082b4dc455ed7e5b, type: 3}
       propertyPath: m_Enabled
