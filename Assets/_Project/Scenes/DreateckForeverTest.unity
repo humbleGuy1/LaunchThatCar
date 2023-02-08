@@ -2888,7 +2888,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _capacity: 100
-  _startLevel: 50
+  _startValue: 50
+  _consuption: 2
 --- !u!1001 &1920230948
 PrefabInstance:
   m_ObjectHideFlags: 0
