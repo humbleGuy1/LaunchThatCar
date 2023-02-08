@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fab16db9ad26e5d4589d394443875f2f, type: 3}
   m_Name: RandomPathGenerator
   m_EditorClassIdentifier: 
-  pathType: 3
+  pathType: 2
   sampleRate: 10
   controlPointsPerSegment: 5
   normalInterpolation:
@@ -33,11 +33,11 @@ MonoBehaviour:
   customNormalDirection: {x: 0, y: 1, z: 0}
   startOrientation: {x: 0, y: 0, z: 0}
   randomizer: {fileID: 11400000, guid: fb600be43607d7e47822c78754644d57, type: 2}
-  restrictPitch: 1
-  restrictYaw: 1
+  restrictPitch: 0
+  restrictYaw: 0
   restrictRoll: 0
-  usePitch: 0
-  useYaw: 0
+  usePitch: 1
+  useYaw: 1
   useRoll: 0
   useColors: 0
   useSizes: 0
