@@ -454,10 +454,10 @@ MonoBehaviour:
       keepUpright: 0
       upVector: {x: 0, y: 1, z: 0}
       applyScale: 0
-      bendMesh: 0
+      bendMesh: 1
       bendSprite: 0
       bendPolygonCollider: 0
-      applyMeshColors: 0
+      applyMeshColors: 1
     _settingsComponent: {fileID: 0}
     overrideSettingsComponent: 0
     meshFilter: {fileID: 1975695510176028046}
@@ -489,7 +489,7 @@ MonoBehaviour:
       keepUpright: 0
       upVector: {x: 0, y: 1, z: 0}
       applyScale: 0
-      bendMesh: 0
+      bendMesh: 1
       bendSprite: 0
       bendPolygonCollider: 0
       applyMeshColors: 0
@@ -524,7 +524,7 @@ MonoBehaviour:
       keepUpright: 0
       upVector: {x: 0, y: 1, z: 0}
       applyScale: 0
-      bendMesh: 0
+      bendMesh: 1
       bendSprite: 0
       bendPolygonCollider: 0
       applyMeshColors: 0
