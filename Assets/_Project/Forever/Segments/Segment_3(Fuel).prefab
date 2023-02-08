@@ -286,6 +286,7 @@ GameObject:
   - component: {fileID: 5602041272632776072}
   - component: {fileID: 6140466282243219352}
   - component: {fileID: 3309437491944975031}
+  - component: {fileID: 5220352284665605249}
   m_Layer: 0
   m_Name: Segment_3(Fuel)
   m_TagString: Untagged
@@ -440,7 +441,7 @@ MonoBehaviour:
     min: {x: -19.309397, y: 0, z: -37.26111}
     size: {x: 45.000004, y: 13.5, z: 80}
   builders: []
-  unpacked: 1
+  unpacked: 0
   alwaysDraw: 0
   drawGeneratedSpline: 1
   drawGeneratedSamples: 1
@@ -448,7 +449,7 @@ MonoBehaviour:
   drawEntranceAndExit: 1
   drawBounds: 1
   drawCustomPaths: 1
-  editorChildCount: 2
+  editorChildCount: 3
 --- !u!114 &5602041272632776071
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4997,3 +4998,16 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 4300000, guid: c601bf21501e828488c83448f3e81136, type: 2}
+--- !u!114 &5220352284665605249
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5602041272632776068}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 12657e6109c136c448df4f5f6aadf788, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _value: 10
