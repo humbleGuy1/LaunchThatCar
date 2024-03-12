@@ -239,6 +239,7 @@ GameObject:
   - component: {fileID: 8487069585241624057}
   - component: {fileID: 8487069585241624056}
   - component: {fileID: 8487069585241624059}
+  - component: {fileID: 22907289511863233}
   m_Layer: 5
   m_Name: FuelSlider
   m_TagString: Untagged
@@ -288,7 +289,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -1
   m_TargetDisplay: 0
 --- !u!114 &8487069585241624059
 MonoBehaviour:
@@ -313,6 +314,19 @@ MonoBehaviour:
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
   m_PresetInfoIsWorld: 0
+--- !u!114 &22907289511863233
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8487069585241624005}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7765953179b0f74ba81c12d2c8e1f5e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _slider: {fileID: 8487069585303491355}
 --- !u!1 &8487069585303491429
 GameObject:
   m_ObjectHideFlags: 0
@@ -323,7 +337,6 @@ GameObject:
   m_Component:
   - component: {fileID: 8487069585303491354}
   - component: {fileID: 8487069585303491355}
-  - component: {fileID: 8487069585303491352}
   m_Layer: 5
   m_Name: Slider
   m_TagString: Untagged
@@ -404,19 +417,6 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &8487069585303491352
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8487069585303491429}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d7765953179b0f74ba81c12d2c8e1f5e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _slider: {fileID: 8487069585303491355}
 --- !u!1 &8487069585598736040
 GameObject:
   m_ObjectHideFlags: 0
